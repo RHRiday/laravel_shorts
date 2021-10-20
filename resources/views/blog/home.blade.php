@@ -13,14 +13,15 @@
         </div>
     @endisset
     <div class="container my-2">
-        <h2 class="display-3 fw-bold text-center ff-catamaran">
-            A diary of drafts
+        <h2 class="display-3 bg-info py-1 fw-bold text-center ff-catamaran">
+            <i class="fab fa-pied-piper-square"></i> Diary of drafts
         </h2>
         @forelse ($blogs as $blog)
             <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
                 <div class="row">
                     <div class="col-6">
-                        <a href="#" class="btn btn-link text-info text-decoration-none"><i class="far fa-user-circle align-middle"></i>
+                        <a href="#" class="btn btn-link text-info text-decoration-none"><i
+                                class="far fa-user-circle align-middle"></i>
                             {{ __('Rifat Hossen') }}
                         </a>
                     </div>
@@ -30,12 +31,12 @@
                         @endforeach
                     </div>
                 </div>
-                <h1 class="display-4 fst-italic ff-playfair">{{ $blog->title }}</h1>
+                <h1 class="display-5 fst-italic ff-playfair">{{ $blog->title }}</h1>
                 <div class="col-md-6 px-0">
                     <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and
                         efficiently about what’s most interesting in this post’s contents.</p>
                     <p class="lead mb-0">
-                        <a href="#" class="text-info">Continue reading...</a>
+                        <a href="{{ route('blog.show', $blog->slug) }}" class="text-info">Continue reading...</a>
                     </p>
                 </div>
             </div>

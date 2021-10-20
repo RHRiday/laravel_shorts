@@ -14,13 +14,14 @@
             <div class="col-lg-3 order-1 order-lg-2">
                 <div class="order-2 order-lg-1">
                     <div class="p-2">
-                        <h4 class="fst-italic bg-light py-2 text-center rounded">Add a post</h4>
+                        <h4 class="fst-italic bg-gray py-2 text-center rounded">Add a post</h4>
                         <form action="{{ route('blog.create') }}" method="POST">
                             @csrf
                             <div class="mb-2 row">
                                 <label for="title" class="col-auto col-form-label">Title :</label>
                                 <div class="col-auto">
-                                    <input type="text" name="title" class="form-control" id="title" placeholder="Ex: How to dance">
+                                    <input type="text" name="title" class="form-control" id="title"
+                                        placeholder="Ex: How to dance">
                                 </div>
                             </div>
                             <div class="row mb-2">
@@ -37,14 +38,14 @@
                             </div>
                             <hr>
                             <div class="border-top d-grid gap-2 col-6 mx-auto">
-                                <button type="submit" class="btn btn-sm btn-primary mb-3">Create post</button>
+                                <button type="submit" class="btn btn-sm btn-primary mb-3">Publish</button>
                             </div>
                         </form>
                     </div>
                 </div>
                 <div class="order-1 order-lg-2">
                     <div class="p-2">
-                        <h4 class="fst-italic bg-dark py-2 text-white text-center rounded">Tags</h4>
+                        <h4 class="fst-italic bg-gray py-2 text-center rounded">Tags</h4>
                         <ol class="list-unstyled mb-0">
                             @forelse ($tags as $tag)
                                 <li><a href="#">{{ $tag }}</a></li>
@@ -57,5 +58,7 @@
             </div>
         </div>
     </div>
+
+    <script src="{{ asset('js/trix.js') }}"></script>
 
 @endsection

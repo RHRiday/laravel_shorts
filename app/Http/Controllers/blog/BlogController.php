@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Blog;
 
 use App\Http\Controllers\Controller;
 use App\Models\blog\Blog;
+use App\Models\blog\Content;
 use App\Models\blog\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,6 +21,7 @@ class BlogController extends Controller
                 array_push($this->tags, $tag->tag);
             }
         }
+        $this->tags = collect($this->tags)->unique();
     }
 
     /**
@@ -32,7 +34,7 @@ class BlogController extends Controller
         $data = Blog::orderByDesc('created_at')->get();
         return view('blog.home', [
             'blogs' => $data,
-            'tags' => collect($this->tags)->unique(),
+            'tags' => $this->tags,
         ]);
     }
 
@@ -59,5 +61,36 @@ class BlogController extends Controller
         }
 
         return redirect('/dokkoblog')->with('success');
+    }
+
+    /**
+     * Recieves @param $slug
+     * 
+     * finds the corresponding blog and it's content
+     * 
+     * displays to user
+     */
+    public function show($slug)
+    {
+        return view('blog.show', [
+            'blog' => Blog::where('slug', $slug)->first(),
+            'tags' => $this->tags,
+        ]);
+    }
+
+    /**
+     * Recieves @param $blogId, $request
+     * 
+     * finds the corresponding blog and add it's content
+     */
+    public function addContent($id, Request $request)
+    {
+        dd($request->content . '+' . $request->type);
+        Content::create([
+            'blog_id' => $id,
+            'type' => $request->type,
+            'content' => $request->content,
+        ]);
+        return redirect()->back();
     }
 }
