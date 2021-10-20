@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
+    {{-- icons --}}
+    <script src="https://kit.fontawesome.com/43b42e8e8a.js"></script>
+
 </head>
 
 <body>
@@ -225,7 +228,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
-                                                                                                                    document.getElementById('logout-form').submit();">
+                                                                                                                        document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 
@@ -244,12 +247,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="{{ asset('js/notify.min.js') }}"></script>
 
     <script>
         $(document).ready(function() {
+            // $('button[type=submit]').notify('Done', {
+            //     autoHideDelay: 3000,
+            //     className: 'success',
+            //     position: 'bottom center'
+            // });
             $('.blog_tags').select2({
                 tags: true,
-                placeholder: "Ex:",
+                placeholder: "Ex: ReactJs",
                 maximumSelectionLength: -1,
                 width: '100%'
             });

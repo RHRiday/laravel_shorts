@@ -10,6 +10,7 @@ class Blog extends Model
     use HasFactory;
 
     protected $table = 'blog_blogs';
+    public $guarded = ['id'];
 
     public function tags()
     {
