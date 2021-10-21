@@ -85,21 +85,26 @@ class BlogController extends Controller
      */
     public function addContent($id, Request $request)
     {
-        if($request->textContent) {
-            $type = 'text';
-            $content = $request->textContent;
-        } elseif($request->imageContent) {
-            $type = 'image';
-            $content = $request->imageContent;
-        } elseif($request->codeContent) {
-            $type = 'code';
-            $content = $request->codeContent;
-        }
-
         Content::create([
             'blog_id' => $id,
-            'type' => $type,
-            'content' => $content,
+            'type' => $request->type,
+            'content' => $request->content,
+        ]);
+        
+        return redirect()->back();
+    }
+
+    /**
+     * Recieves @param $blogId, $request
+     * 
+     * finds the corresponding blog and add it's content
+     */
+    public function editContent($id, Request $request)
+    {
+        $content = Content::findOrFail($id);
+
+        $content->update([
+            'content' => $request->content,
         ]);
         
         return redirect()->back();

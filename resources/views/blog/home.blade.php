@@ -22,7 +22,7 @@
                     <div class="col-6">
                         <a href="#" class="btn btn-link text-info text-decoration-none"><i
                                 class="far fa-user-circle align-middle"></i>
-                            {{ __('Rifat Hossen') }}
+                            {{ $blog->user->name }}
                         </a>
                     </div>
                     <div class="col-6 d-flex flex-row-reverse">

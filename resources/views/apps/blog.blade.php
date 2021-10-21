@@ -14,33 +14,39 @@
             <div class="col-lg-3 order-1 order-lg-2">
                 <div class="order-2 order-lg-1">
                     <div class="p-2">
-                        <h4 class="fst-italic bg-gray py-2 text-center rounded">Add a post</h4>
-                        <form action="{{ route('blog.create') }}" method="POST">
-                            @csrf
-                            <div class="mb-2 row">
-                                <label for="title" class="col-auto col-form-label">Title :</label>
-                                <div class="col-auto">
-                                    <input type="text" name="title" class="form-control" id="title"
-                                        placeholder="Ex: How to dance">
+                        @auth
+                            <h4 class="fst-italic bg-gray py-2 text-center rounded">Add a post</h4>
+                            <form action="{{ route('blog.create') }}" method="POST">
+                                @csrf
+                                <div class="mb-2 row">
+                                    <label for="title" class="col-auto col-form-label">Title :</label>
+                                    <div class="col-auto">
+                                        <input type="text" name="title" class="form-control" id="title"
+                                            placeholder="Ex: How to dance">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row mb-2">
-                                <label for="blog_tags" class="col-auto col-form-label">Tag(s) :</label>
-                                <div class="col-auto">
-                                    <select class="blog_tags form-control" name="tags[]" multiple="multiple">
-                                        @forelse ($tags as $tag)
-                                            <option value="{{ $tag }}">{{ $tag }}</option>
-                                        @empty
-                                            {{ __('nothing') }}
-                                        @endforelse
-                                    </select>
+                                <div class="row mb-2">
+                                    <label for="blog_tags" class="col-auto col-form-label">Tag(s) :</label>
+                                    <div class="col-auto">
+                                        <select class="blog_tags form-control" name="tags[]" multiple="multiple">
+                                            @forelse ($tags as $tag)
+                                                <option value="{{ $tag }}">{{ $tag }}</option>
+                                            @empty
+                                                {{ __('nothing') }}
+                                            @endforelse
+                                        </select>
+                                    </div>
                                 </div>
+                                <hr>
+                                <div class="border-top d-grid gap-2 col-6 mx-auto">
+                                    <button type="submit" class="btn btn-sm btn-primary mb-3">Publish</button>
+                                </div>
+                            </form>
+                        @else
+                            <div class="alert alert-danger text-center">
+                                Login to publish blogs
                             </div>
-                            <hr>
-                            <div class="border-top d-grid gap-2 col-6 mx-auto">
-                                <button type="submit" class="btn btn-sm btn-primary mb-3">Publish</button>
-                            </div>
-                        </form>
+                        @endauth
                     </div>
                 </div>
                 <div class="order-1 order-lg-2">

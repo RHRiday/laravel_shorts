@@ -25,6 +25,7 @@ Route::prefix('dokkoblog')->group(function () {
     Route::post('/create', [BlogController::class, 'create'])->name('blog.create');
     Route::get('/{slug}', [BlogController::class, 'show'])->name('blog.show');
     Route::post('/{id}/update', [BlogController::class, 'addContent'])->name('blog.addContent');
+    Route::put('/content/{id}/edit', [BlogController::class, 'editContent'])->name('blog.editContent');
 });
 
 Route::post('test', function (Request $request)
