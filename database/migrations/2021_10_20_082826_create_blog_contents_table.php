@@ -15,7 +15,7 @@ class CreateBlogContentsTable extends Migration
     {
         Schema::create('blog_contents', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('blog_id')->constrained('blog_blogs');
+            $table->foreignId('blog_id')->constrained('blog_blogs')->onDelete('cascade');
             $table->string('type')->nullable();
             $table->mediumText('content')->nullable();
             $table->timestamps();

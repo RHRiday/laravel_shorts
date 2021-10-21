@@ -21,7 +21,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="{{ route($headerRoute) }}">
+            <a class="navbar-brand ff-maven" href="{{ route($headerRoute) }}">
                 {{ $title }}
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"

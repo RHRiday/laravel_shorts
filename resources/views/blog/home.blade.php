@@ -33,10 +33,19 @@
                 </div>
                 <h1 class="display-5 fst-italic ff-playfair">{{ $blog->title }}</h1>
                 <div class="col-md-6 px-0">
-                    <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and
-                        efficiently about what’s most interesting in this post’s contents.</p>
+                    <p class="lead my-3">
+                        @php
+                            $object = $blog->contents->where('type', 'text');
+
+                            if ($object->isEmpty()) {
+                                echo "<span class='text-danger'>Content not found!!";
+                            }else {
+                                echo mb_substr(strip_tags($object->first()->content), 0, 250);
+                            }
+                        @endphp
+                    </p>
                     <p class="lead mb-0">
-                        <a href="{{ route('blog.show', $blog->slug) }}" class="text-info">Continue reading...</a>
+                        <a href="{{ route('blog.show', $blog->slug) }}" class="text-info">View...</a>
                     </p>
                 </div>
             </div>
