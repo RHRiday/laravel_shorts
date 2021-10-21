@@ -33,10 +33,10 @@
                             </div>
                         @break
                         @case('image')
-                            <img src="{{ $content->content }}" alt="Not a valid image">
+                            <img src="{{ $content->content }}" alt="Not a valid image" style="max-width: 100%">
                         @break
                         @case('code')
-                            <div class="bg-dark text-success p-2">
+                            <div class="bg-dark text-warning p-2">
                                 {{ $content->content }}
                             </div>
                         @break
@@ -50,7 +50,7 @@
         <div class="d-flex mt-5">
             <hr class="flex-grow-1">
             <div id="modals">
-                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#contentModal">
+                <button class="btn btn-primary btn-add" type="button" data-bs-toggle="modal" data-bs-target="#contentModal">
                     <i class="fas fa-plus-circle text-light"></i>
                 </button>
                 <!-- Modal -->

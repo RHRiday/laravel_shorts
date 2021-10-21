@@ -85,12 +85,23 @@ class BlogController extends Controller
      */
     public function addContent($id, Request $request)
     {
-        dd($request->content . '+' . $request->type);
+        if($request->textContent) {
+            $type = 'text';
+            $content = $request->textContent;
+        } elseif($request->imageContent) {
+            $type = 'image';
+            $content = $request->imageContent;
+        } elseif($request->codeContent) {
+            $type = 'code';
+            $content = $request->codeContent;
+        }
+
         Content::create([
             'blog_id' => $id,
-            'type' => $request->type,
-            'content' => $request->content,
+            'type' => $type,
+            'content' => $content,
         ]);
+        
         return redirect()->back();
     }
 }

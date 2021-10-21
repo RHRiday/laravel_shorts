@@ -13,25 +13,22 @@
                     <div class="mb-1">
                         @switch($type)
                             @case('text')
-                                <input type="hidden" name="type" value="text">
                                 <p class="w-100">
-                                    <input id="content" type="hidden" name="content" value="{{ old('content') }}"
+                                    <input id="textContent" type="hidden" name="textContent" value="{{ old('textContent') }}"
                                         required />
-                                    <trix-editor input="content"
+                                    <trix-editor input="textContent"
                                         placeholder="Write your content here. You can also use this as an html codepen.">
                                     </trix-editor>
                                 </p>
                             @break
                             @case('image')
-                                <input type="hidden" name="type" value="image">
-                                <input class="form-control" name="content" type="text" placeholder="Import image address">
+                                <input class="form-control" name="imageContent" type="text" placeholder="Import image address">
                             @break
                             @case('code')
-                                <input type="hidden" name="type" value="code">
                                 <p class="w-100">
-                                    <input id="content" type="hidden" name="content" value="{{ old('content') }}"
+                                    <input id="codeContent" type="hidden" name="codeContent" value="{{ old('codeContent') }}"
                                         required />
-                                    <trix-editor input="content"
+                                    <trix-editor input="codeContent"
                                         placeholder="Write your content here. You can also use this as an html codepen.">
                                     </trix-editor>
                                 </p>
