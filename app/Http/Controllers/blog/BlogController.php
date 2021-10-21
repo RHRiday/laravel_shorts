@@ -81,7 +81,9 @@ class BlogController extends Controller
     /**
      * Recieves @param $blogId, $request
      * 
-     * finds the corresponding blog and add it's content
+     * finds the corresponding blog
+     * 
+     * adds it's content
      */
     public function addContent($id, Request $request)
     {
@@ -97,7 +99,9 @@ class BlogController extends Controller
     /**
      * Recieves @param $contentID, $request
      * 
-     * finds the corresponding blog content and update it's content
+     * finds the corresponding blog content
+     * 
+     * updates it's content
      */
     public function editContent($id, Request $request)
     {
@@ -111,14 +115,30 @@ class BlogController extends Controller
     }
 
     /**
-     * Recieves @param $contentID, $request
+     * Recieves @param $blog
      * 
-     * finds the corresponding blog content and update it's content
+     * finds the corresponding blog
+     * 
+     * deletes it
      */
     public function destroy(Blog $blog)
     {
         $blog->delete();
         
         return redirect('/dokkoblog');
+    }
+
+    /**
+     * Recieves @param $content
+     * 
+     * finds the corresponding blog content
+     * 
+     * deletes the content
+     */
+    public function deleteContent(Content $content)
+    {
+        $content->delete();
+        
+        return redirect()->back();
     }
 }

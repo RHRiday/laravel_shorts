@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function(){
+
+Route::get('/', function () {
     return view('welcome');
 });
 Auth::routes();
@@ -27,9 +28,9 @@ Route::prefix('dokkoblog')->group(function () {
     Route::post('/{id}/update', [BlogController::class, 'addContent'])->name('blog.addContent');
     Route::put('/content/{id}/edit', [BlogController::class, 'editContent'])->name('blog.editContent');
     Route::delete('/{blog}/delete', [BlogController::class, 'destroy'])->name('blog.destroy');
+    Route::delete('/content/{content}/delete', [BlogController::class, 'deleteContent'])->name('blog.deleteContent');
 });
 
-Route::post('test', function (Request $request)
-{
-   dd($request->states); 
+Route::post('test', function (Request $request) {
+    dd($request->states);
 });
