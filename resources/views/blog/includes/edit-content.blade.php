@@ -43,13 +43,13 @@
                 </div>
                 <div class="modal-footer d-flex justify-content-between">
                     <a href="{{ route('blog.deleteContent', $id) }}"
-                        onclick="event.preventDefault(); document.getElementById('deleteContentForm').submit();"
+                        onclick="event.preventDefault(); document.getElementById('deleteContentForm_{{ $id }}').submit();"
                         class="btn btn-danger">Delete the content</a>
                     <button type="submit" class="btn btn-primary">Update</button>
                 </div>
             </form>
         </div>
-        <form id="deleteContentForm" action="{{ route('blog.deleteContent', $id) }}" method="POST"
+        <form id="deleteContentForm_{{ $id }}" action="{{ route('blog.deleteContent', $id) }}" method="POST"
             class="d-none">
             @csrf
             @method('delete')
