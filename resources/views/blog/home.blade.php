@@ -14,20 +14,22 @@
     @endisset
     <div class="container my-2">
         <h2 class="display-3 bg-info py-1 fw-bold text-center ff-catamaran">
-            <i class="fab fa-pied-piper-square"></i> Diary of drafts
+            <i class="fab fa-pied-piper-square"></i> Drafts of Dokko
         </h2>
+        <h6 class="text-center ff-catamaran py-1">Learn new things daily</h6>
         @forelse ($blogs as $blog)
             <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
                 <div class="row">
                     <div class="col-6">
-                        <a href="#" class="btn btn-link text-info text-decoration-none"><i
+                        <a href="{{ route('blog', ['user', $blog->user_id]) }}"
+                            class="btn btn-link text-info text-decoration-none"><i
                                 class="far fa-user-circle align-middle"></i>
                             {{ $blog->user->name }}
                         </a>
                     </div>
                     <div class="col-6 d-flex flex-row-reverse">
                         @foreach ($blog->tags as $tag)
-                            <a href="#" class="btn btn-link text-info">#{{ $tag->tag }}</a>
+                            <a href="{{ route('blog', ['tag', $tag->tag]) }}" class="btn btn-link text-info">#{{ $tag->tag }}</a>
                         @endforeach
                     </div>
                 </div>
@@ -36,10 +38,10 @@
                     <p class="lead my-3">
                         @php
                             $object = $blog->contents->where('type', 'text');
-
+                            
                             if ($object->isEmpty()) {
                                 echo "<span class='text-danger'>Content not found!!";
-                            }else {
+                            } else {
                                 echo mb_substr(strip_tags($object->first()->content), 0, 250);
                             }
                         @endphp

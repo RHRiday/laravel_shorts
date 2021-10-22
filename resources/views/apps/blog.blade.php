@@ -15,20 +15,20 @@
                 <div class="order-2 order-lg-1">
                     <div class="p-2">
                         @auth
-                            <h4 class="fst-italic bg-gray py-2 text-center rounded">Add a post</h4>
+                            <h4 class="fst-italic bg-gray py-2 text-center rounded">Add draft</h4>
                             <form action="{{ route('blog.create') }}" method="POST">
                                 @csrf
                                 <div class="mb-2 row">
                                     <label for="title" class="col-auto col-form-label">Title :</label>
                                     <div class="col-auto">
                                         <input type="text" name="title" class="form-control" id="title"
-                                            placeholder="Ex: How to dance">
+                                            placeholder="Ex: How to dance" required>
                                     </div>
                                 </div>
                                 <div class="row mb-2">
                                     <label for="blog_tags" class="col-auto col-form-label">Tag(s) :</label>
                                     <div class="col-auto">
-                                        <select class="blog_tags form-control" name="tags[]" multiple="multiple">
+                                        <select class="blog_tags form-control" name="tags[]" multiple="multiple" required>
                                             @forelse ($tags as $tag)
                                                 <option value="{{ $tag }}">{{ $tag }}</option>
                                             @empty
@@ -54,7 +54,7 @@
                         <h4 class="fst-italic bg-gray py-2 text-center rounded">Tags</h4>
                         <ol class="list-unstyled mb-0">
                             @forelse ($tags as $tag)
-                                <li><a href="#">{{ $tag }}</a></li>
+                                <li><a href="{{ route('blog', ['tag', $tag]) }}">{{ $tag }}</a></li>
                             @empty
                                 <li class="fst-italic small">No tags available</li>
                             @endforelse

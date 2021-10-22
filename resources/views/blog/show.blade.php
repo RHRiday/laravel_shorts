@@ -12,12 +12,13 @@
             <hr>
         </div>
     @endisset
-    <div class="container my-2">
+    <div class="my-2">
         <h2 class="display-5 bg-info p-2 fw-bold ff-catamaran">
             <i class="fas fa-book-open"></i> {{ $blog->title }}
         </h2>
         <div class="my-1 p-1 d-flex justify-content-between">
-            <a href="#" class="btn btn-link text-decoration-none"><i class="far fa-user-circle align-middle"></i>
+            <a href="{{ route('blog', ['user', $blog->user_id]) }}" class="btn btn-link text-decoration-none"><i
+                    class="far fa-user-circle align-middle"></i>
                 {{ $blog->user->name }}
             </a>
             @if ($blog->user->id === Auth::id())
@@ -53,53 +54,51 @@
 
         <div class="row">
             @foreach ($blog->contents as $content)
-                <div class="col-10 col-md-11 my-2">
+                <div class="col-12 my-2 position-relative">
                     @switch($content->type)
                         @case('text')
-                            <div class="bg-light p-2">
+                            @if ($blog->user->id === Auth::id())
+                                <div class="position-absolute top-0 end-0">
+                                    <button class="btn btn-sm btn-link badge bg-info" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#textEditModal_{{ $content->id }}"><i
+                                            class="far fa-edit align-middle"></i> Edit</button>
+                                    @include('blog.includes.edit-content', ['type' => 'text', 'id' => $content->id, 'content' =>
+                                    $content->content])
+                                </div>
+                            @endif
+                            <div class="bg-light p-2 fs-5 overflow-auto mt-3 rounded">
                                 {!! $content->content !!}
                             </div>
                         @break
                         @case('image')
-                            <img src="{{ $content->content }}" alt="Not a valid image" style="max-width: 100%">
+                            @if ($blog->user->id === Auth::id())
+                                <div class="position-absolute top-0 end-0">
+                                    <button class="btn btn-sm btn-link badge bg-info" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#imageEditModal_{{ $content->id }}"><i
+                                            class="far fa-edit align-middle"></i> Edit</button>
+                                    @include('blog.includes.edit-content', ['type' => 'image', 'id' => $content->id, 'content'
+                                    => $content->content])
+                                </div>
+                            @endif
+                            <img src="{{ $content->content }}" alt="Not a valid image" class="mt-3" style="max-width: 100%">
                         @break
                         @case('code')
-                            <div class="bg-dark text-warning p-2">
+                            @if ($blog->user->id === Auth::id())
+                                <div class="position-absolute top-0 end-0">
+                                    <button class="btn btn-sm btn-link badge bg-info" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#codeEditModal_{{ $content->id }}"><i
+                                            class="far fa-edit align-middle"></i> Edit</button>
+                                    @include('blog.includes.edit-content', ['type' => 'code', 'id' => $content->id, 'content' =>
+                                    $content->content])
+                                </div>
+                            @endif
+                            <div class="bg-dark text-warning p-2 overflow-auto text-nowrap mt-3">
                                 {!! $content->content !!}
                             </div>
                         @break
                         @default
 
                     @endswitch
-                </div>
-                <div class="col-2 col-md-1 my-2">
-                    @if ($blog->user->id === Auth::id())
-                        @switch($content->type)
-                            @case('text')
-                                <button class="btn btn-sm btn-link text-primary" type="button" data-bs-toggle="modal"
-                                    data-bs-target="#textEditModal_{{ $content->id }}"><i
-                                        class="far fa-edit align-middle"></i></button>
-                                @include('blog.includes.edit-content', ['type' => 'text', 'id' => $content->id, 'content' =>
-                                $content->content])
-                            @break
-                            @case('image')
-                                <button class="btn btn-sm btn-link text-primary" type="button" data-bs-toggle="modal"
-                                    data-bs-target="#imageEditModal_{{ $content->id }}"><i
-                                        class="far fa-edit align-middle"></i></button>
-                                @include('blog.includes.edit-content', ['type' => 'image', 'id' => $content->id, 'content' =>
-                                $content->content])
-                            @break
-                            @case('code')
-                                <button class="btn btn-sm btn-link text-primary" type="button" data-bs-toggle="modal"
-                                    data-bs-target="#codeEditModal_{{ $content->id }}"><i
-                                        class="far fa-edit align-middle"></i></button>
-                                @include('blog.includes.edit-content', ['type' => 'code', 'id' => $content->id, 'content' =>
-                                $content->content])
-                            @break
-                            @default
-
-                        @endswitch
-                    @endif
                 </div>
             @endforeach
         </div>

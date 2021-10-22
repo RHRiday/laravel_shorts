@@ -22,7 +22,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::prefix('dokkoblog')->group(function () {
-    Route::get('/', [BlogController::class, 'index'])->name('blog');
+    Route::get('/{query?}/{parameter?}', [BlogController::class, 'index'])->name('blog');
     Route::post('/create', [BlogController::class, 'create'])->name('blog.create');
     Route::get('/{slug}', [BlogController::class, 'show'])->name('blog.show');
     Route::post('/{id}/update', [BlogController::class, 'addContent'])->name('blog.addContent');

@@ -29,9 +29,32 @@ class BlogController extends Controller
      * 
      * the home page of DokkoBlog
      */
-    public function index()
+    public function index($parameter = null, $query = null)
     {
         $data = Blog::orderByDesc('created_at')->get();
+
+        if ($parameter) {
+            switch ($parameter) {
+                case 'tag':
+                    $data = [];
+                    $collection = Tag::where('tag', $query)->get();
+                    foreach ($collection as $tag) {
+                        array_push($data, $tag->blog);
+                    }
+                    break;
+                case 'user':
+                    $data = $data->where('user_id', $query);
+                    break;
+                default:
+                    if ($query == null) {
+                        return $this->show($parameter);
+                    } else {
+                        abort(404);
+                    }
+                    break;
+            }
+        }
+
         return view('blog.home', [
             'blogs' => $data,
             'tags' => $this->tags,
@@ -53,9 +76,9 @@ class BlogController extends Controller
             'user_id' => Auth::id(),
         ]);
 
-        foreach($request->tags as $tag) {
+        foreach ($request->tags as $tag) {
             Tag::create([
-                'tag' => $tag,
+                'tag' => str_replace('/\s+/', '', ucwords($tag)),
                 'blog_id' => $blog->id,
             ]);
         }
@@ -73,7 +96,7 @@ class BlogController extends Controller
     public function show($slug)
     {
         return view('blog.show', [
-            'blog' => Blog::where('slug', $slug)->first(),
+            'blog' => Blog::where('slug', $slug)->firstOrFail(),
             'tags' => $this->tags,
         ]);
     }
@@ -92,7 +115,7 @@ class BlogController extends Controller
             'type' => $request->type,
             'content' => $request->content,
         ]);
-        
+
         return redirect()->back();
     }
 
@@ -110,7 +133,7 @@ class BlogController extends Controller
         $content->update([
             'content' => $request->content,
         ]);
-        
+
         return redirect()->back();
     }
 
@@ -124,7 +147,7 @@ class BlogController extends Controller
     public function destroy(Blog $blog)
     {
         $blog->delete();
-        
+
         return redirect('/dokkoblog');
     }
 
@@ -138,7 +161,7 @@ class BlogController extends Controller
     public function deleteContent(Content $content)
     {
         $content->delete();
-        
+
         return redirect()->back();
     }
 }
