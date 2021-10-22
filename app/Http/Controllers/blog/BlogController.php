@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Blog;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateBlogRequest;
 use App\Models\blog\Blog;
 use App\Models\blog\Content;
 use App\Models\blog\Tag;
@@ -68,7 +69,7 @@ class BlogController extends Controller
      * 
      * Creates a blog
      */
-    public function create(Request $request)
+    public function create(CreateBlogRequest $request)
     {
         $blog = Blog::create([
             'title' => $request->title,

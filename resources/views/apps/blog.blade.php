@@ -24,6 +24,22 @@
                                         <input type="text" name="title" class="form-control" id="title"
                                             placeholder="Ex: How to dance" required>
                                     </div>
+                                    <div class="col-12">
+                                        @if ($errors->has('title'))
+                                            @foreach ($errors->get('title') as $message)
+                                                <span class="invalid-feedback d-block" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @endforeach
+                                        @endif
+                                        @if ($errors->has('slug'))
+                                            @foreach ($errors->get('slug') as $message)
+                                                <span class="invalid-feedback d-block" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @endforeach
+                                        @endif
+                                    </div>
                                 </div>
                                 <div class="row mb-2">
                                     <label for="blog_tags" class="col-auto col-form-label">Tag(s) :</label>
@@ -35,6 +51,15 @@
                                                 {{ __('nothing') }}
                                             @endforelse
                                         </select>
+                                    </div>
+                                    <div class="col-12">
+                                        @if ($errors->has('tags'))
+                                            @foreach ($errors->get('tags') as $message)
+                                                <span class="invalid-feedback d-block" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @endforeach
+                                        @endif
                                     </div>
                                 </div>
                                 <hr>
