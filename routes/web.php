@@ -31,6 +31,4 @@ Route::prefix('dokkoblog')->group(function () {
     Route::delete('/content/{content}/delete', [BlogController::class, 'deleteContent'])->name('blog.deleteContent');
 });
 
-Route::post('test', function (Request $request) {
-    dd($request->states);
-});
+// Route::get('shaping', [BlogController::class, 'shaping']);

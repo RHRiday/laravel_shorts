@@ -13,9 +13,19 @@
         </div>
     @endisset
     <div class="my-2">
-        <h2 class="display-5 bg-info p-2 fw-bold ff-catamaran">
-            <i class="fas fa-book-open"></i> {{ $blog->title }}
-        </h2>
+        <div class="row bg-info">
+            <h2 class="display-5 p-2 fw-bold ff-catamaran col-lg-8">
+                {{ $blog->title }}
+            </h2>
+            <div class="col-lg-4 d-flex flex-column">
+                <ul class="list-unstyled my-auto float-end">
+                    @foreach ($blog->contents->where('type', 'header') as $item)
+                        <li class="ps-5"># <a href="#{{ Str::slug($item->content, '_') }}"
+                                class="text-dark">{{ $item->content }}</a></li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
         <div class="my-1 p-1 d-flex justify-content-between">
             <a href="{{ route('blog', ['user', $blog->user_id]) }}" class="btn btn-link text-decoration-none"><i
                     class="far fa-user-circle align-middle"></i>
@@ -31,8 +41,7 @@
                         <div class="modal-content">
                             <div class="modal-header alert alert-danger">
                                 <h5 class="modal-title">Confirm delete?</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body d-flex justify-content-around">
                                 <div class="mb-1">
@@ -56,6 +65,22 @@
             @foreach ($blog->contents as $content)
                 <div class="col-12 my-2 position-relative">
                     @switch($content->type)
+                        @case('header')
+                            @if ($blog->user->id === Auth::id())
+                                <div class="position-absolute top-0 end-0">
+                                    <button class="btn btn-sm btn-link badge bg-info" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#headerEditModal_{{ $content->id }}"><i
+                                            class="far fa-edit align-middle"></i> Edit</button>
+                                    @include('blog.includes.edit-content', ['type' => 'header', 'id' => $content->id, 'content'
+                                    => $content->content])
+                                </div>
+                            @endif
+                            <div class="bg-light p-2 fs-5 overflow-auto mt-3 rounded ff-catamaran"
+                                id="{{ Str::slug($content->content, '_') }}">
+                                <h3> <i class="fas fa-link text-info"></i>
+                                    {{ $content->content }}</h3>
+                            </div>
+                        @break
                         @case('text')
                             @if ($blog->user->id === Auth::id())
                                 <div class="position-absolute top-0 end-0">
@@ -66,7 +91,7 @@
                                     $content->content])
                                 </div>
                             @endif
-                            <div class="bg-light p-2 fs-5 overflow-auto mt-3 rounded">
+                            <div class="bg-light p-2 fs-5 overflow-auto mt-3 rounded ff-merryweather">
                                 {!! $content->content !!}
                             </div>
                         @break
@@ -92,7 +117,7 @@
                                     $content->content])
                                 </div>
                             @endif
-                            <div class="bg-dark text-warning p-2 overflow-auto text-nowrap mt-3">
+                            <div class="bg-dark text-warning p-2 overflow-auto text-nowrap mt-3 ff-source-code">
                                 {!! $content->content !!}
                             </div>
                         @break
@@ -121,6 +146,10 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body d-flex justify-content-around flex-wrap mb-3">
+
+                                    <button class="btn btn-sm btn-primary mb-2" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#headerInputModal"> <i class="fas fa-link"></i> Header</button>
+                                    @include('blog.includes.add-content', ['type' => 'header'])
 
                                     <button class="btn btn-sm btn-primary mb-2" type="button" data-bs-toggle="modal"
                                         data-bs-target="#textInputModal"> <i class="fa fa-keyboard"></i> Text</button>

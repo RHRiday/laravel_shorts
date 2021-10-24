@@ -10,17 +10,20 @@
             <form action="{{ route('blog.addContent', $blog->id) }}" method="post">
                 @csrf
                 <div class="modal-body d-flex justify-content-around">
-                    <div class="mb-1">
+                    <div class="col-10 mb-1">
                         @switch($type)
+                            @case('header')
+                                <input type="hidden" name="type" value="header">
+                                <input class="form-control" type="text" name="content" value="{{ old('headerContent') }}"
+                                    placeholder="Unique keyword that defines a section" required>
+                            @break
                             @case('text')
-                                <p class="w-100">
-                                    <input type="hidden" name="type" value="text">
-                                    <input id="textContent" type="hidden" name="content" value="{{ old('textContent') }}"
-                                        required />
-                                    <trix-editor input="textContent"
-                                        placeholder="Write your content here. You can also use this as an html codepen.">
-                                    </trix-editor>
-                                </p>
+                                <input type="hidden" name="type" value="text">
+                                <input id="textContent" type="hidden" name="content" value="{{ old('textContent') }}"
+                                    required />
+                                <trix-editor input="textContent"
+                                    placeholder="Write your content here. You can also use this as an html codepen.">
+                                </trix-editor>
                             @break
                             @case('image')
                                 <input type="hidden" name="type" value="image">
@@ -28,14 +31,12 @@
                                     placeholder="Import image address">
                             @break
                             @case('code')
-                                <p class="w-100">
-                                    <input type="hidden" name="type" value="code">
-                                    <input id="codeContent" type="hidden" name="content" value="{{ old('codeContent') }}"
-                                        required />
-                                    <trix-editor input="codeContent"
-                                        placeholder="Write your content here. You can also use this as an html codepen.">
-                                    </trix-editor>
-                                </p>
+                                <input type="hidden" name="type" value="code">
+                                <input id="codeContent" type="hidden" name="content" value="{{ old('codeContent') }}"
+                                    required />
+                                <trix-editor input="codeContent"
+                                    placeholder="Write your content here. You can also use this as an html codepen.">
+                                </trix-editor>
                             @break
                             @default
 

@@ -1,19 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@1,500&display=swap');
 
 .bg-gray {
     background-color: #adb5bd !important;
 }
 
-.ff-playfair {
-    font-family: 'Playfair Display', serif;
+.ff-catamaran {
+    font-family: 'Catamaran', sans-serif;
 }
 
 .ff-maven {
     font-family: 'Maven Pro', sans-serif;
 }
 
-.ff-catamaran {
-    font-family: 'Catamaran', sans-serif;
+.ff-merryweather{
+    font-family: 'Merriweather', serif;
+}
+
+.ff-playfair {
+    font-family: 'Playfair Display', serif;
+}
+
+.ff-source-code {
+    font-family: 'Source Code Pro', monospace;
 }

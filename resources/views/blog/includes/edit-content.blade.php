@@ -11,30 +11,29 @@
                 @csrf
                 @method('PUT')
                 <div class="modal-body d-flex justify-content-around">
-                    <div class="mb-1">
+                    <div class="mb-1 col-10">
                         @switch($type)
+                            @case('header')
+                                <input type="text" class="form-control" name="content" value="{{ $content }}"
+                                    placeholder="Unique keyword that defines a section" required>
+                            @break
                             @case('text')
-                                <p class="w-100">
-                                    <input id="textContent{{ '_' . $id }}" type="hidden" name="content"
-                                        value="{{ $content }}" required />
-                                    <trix-editor input="textContent{{ '_' . $id }}"
-                                        placeholder="Write your content here. You can also use this as an html codepen.">
-                                    </trix-editor>
-                                </p>
+                                <input id="textContent{{ '_' . $id }}" type="hidden" name="content"
+                                    value="{{ $content }}" required />
+                                <trix-editor input="textContent{{ '_' . $id }}"
+                                    placeholder="Write your content here. You can also use this as an html codepen.">
+                                </trix-editor>
                             @break
                             @case('image')
                                 <input class="form-control" name="content" type="text" value="{{ $content }}"
                                     placeholder="Import image address">
                             @break
                             @case('code')
-                                <p class="w-100">
-                                    <input type="hidden" name="type" value="code">
-                                    <input id="codeContent{{ '_' . $id }}" type="hidden" name="content"
-                                        value="{{ $content }}" required />
-                                    <trix-editor input="codeContent{{ '_' . $id }}"
-                                        placeholder="Write your content here. You can also use this as an html codepen.">
-                                    </trix-editor>
-                                </p>
+                                <input id="codeContent{{ '_' . $id }}" type="hidden" name="content"
+                                    value="{{ $content }}" required />
+                                <trix-editor input="codeContent{{ '_' . $id }}"
+                                    placeholder="Write your content here. You can also use this as an html codepen.">
+                                </trix-editor>
                             @break
                             @default
 
@@ -49,8 +48,8 @@
                 </div>
             </form>
         </div>
-        <form id="deleteContentForm_{{ $id }}" action="{{ route('blog.deleteContent', $id) }}" method="POST"
-            class="d-none">
+        <form id="deleteContentForm_{{ $id }}" action="{{ route('blog.deleteContent', $id) }}"
+            method="POST" class="d-none">
             @csrf
             @method('delete')
         </form>

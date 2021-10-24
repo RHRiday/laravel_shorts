@@ -22,7 +22,8 @@
                                     <label for="title" class="col-auto col-form-label">Title :</label>
                                     <div class="col-auto">
                                         <input type="text" name="title" class="form-control" id="title"
-                                            placeholder="Ex: How to dance" required>
+                                            placeholder="Ex: Creating an object in JavaScript" required
+                                            value="{{ old('title') }}">
                                     </div>
                                     <div class="col-12">
                                         @if ($errors->has('title'))
