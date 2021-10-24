@@ -270,7 +270,81 @@
             });
         });
     </script>
-    <script src="{{ asset('js/ajax.js') }}"></script>
+    <script src="{{ asset('js/ajax.js') }}">
+        // $.ajaxSetup({
+        //     headers: {
+        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //     }
+        // })
+
+        // function addContent(type, id) {
+        //     switch (type) {
+        //         case 'text':
+        //             let content = $('#textContent').val();
+        //             $.ajax({
+        //                 type: "post",
+        //                 url: "/dokkoblog/" + id + "/update",
+        //                 data: {
+        //                     type: type,
+        //                     content: content
+        //                 },
+        //                 dataType: "dataType",
+        //                 success: function(response) {
+        //                     console.log('added!');
+        //                 }
+        //             });
+        //             break;
+        //         case 'header':
+        //             let content = $('#headerContent').val();
+        //             $.ajax({
+        //                 type: "post",
+        //                 url: "/dokkoblog/" + id + "/update",
+        //                 data: {
+        //                     type: type,
+        //                     content: content
+        //                 },
+        //                 dataType: "dataType",
+        //                 success: function(response) {
+        //                     console.log('added!');
+        //                 }
+        //             });
+        //             break;
+        //         case 'image':
+        //             let content = $('#imageContent').val();
+        //             $.ajax({
+        //                 type: "post",
+        //                 url: "/dokkoblog/" + id + "/update",
+        //                 data: {
+        //                     type: type,
+        //                     content: content
+        //                 },
+        //                 dataType: "dataType",
+        //                 success: function(response) {
+        //                     console.log('added!');
+        //                 }
+        //             });
+        //             break;
+        //         case 'code':
+        //             let content = $('#codeContent').val();
+        //             $.ajax({
+        //                 type: "post",
+        //                 url: "/dokkoblog/" + id + "/update",
+        //                 data: {
+        //                     type: type,
+        //                     content: content
+        //                 },
+        //                 dataType: "dataType",
+        //                 success: function(response) {
+        //                     console.log('added!');
+        //                 }
+        //             });
+        //             break;
+
+        //         default:
+        //             break;
+        //     }
+        // }
+    </script>
 </body>
 
 </html>

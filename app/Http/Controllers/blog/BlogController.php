@@ -111,13 +111,13 @@ class BlogController extends Controller
      */
     public function addContent($id, Request $request)
     {
-        Content::create([
+        $data = Content::create([
             'blog_id' => $id,
             'type' => $request->type,
             'content' => $request->content,
         ]);
 
-        return redirect()->back();
+        return response()->json($data);
     }
 
     /**

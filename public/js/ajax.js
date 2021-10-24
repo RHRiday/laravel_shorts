@@ -4,22 +4,18 @@ $.ajaxSetup({
     }
 })
 
-function addContent(type) {
-    switch (type) {
-        case 'text':
-            let content = $('#textContent').val();
-            $.ajax({
-                type: "post",
-                url: "url",
-                data: "data",
-                dataType: "dataType",
-                success: function (response) {
-                    
-                }
-            });
-            break;
-    
-        default:
-            break;
-    }
+function addContent(type, id) {
+    console.log(type);
+    let content = $('#' + type + 'Content').val();
+    $.ajax({
+        type: "post",
+        url: "/dokkoblog/" + id + "/update",
+        data: {
+            type: type,
+            content: content
+        },
+        success: function (response) {
+            console.log(response);
+        }
+    });
 }
