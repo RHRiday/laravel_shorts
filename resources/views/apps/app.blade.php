@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $title }}</title>
 
     {{-- styles --}}
@@ -144,9 +145,8 @@
                                 </button>
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="register_modal" tabindex="-1"
-                                    aria-labelledby="loginModalLabel" aria-hidden="true" data-bs-backdrop="static"
-                                    data-bs-keyboard="false">
+                                <div class="modal fade" id="register_modal" tabindex="-1" aria-labelledby="loginModalLabel"
+                                    aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header card-header">
@@ -270,6 +270,7 @@
             });
         });
     </script>
+    <script src="{{ asset('js/ajax.js') }}"></script>
 </body>
 
 </html>

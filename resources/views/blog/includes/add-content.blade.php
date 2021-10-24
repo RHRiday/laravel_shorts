@@ -15,7 +15,7 @@
                             @case('header')
                                 <input type="hidden" name="type" value="header">
                                 <input class="form-control" type="text" name="content" value="{{ old('headerContent') }}"
-                                    placeholder="Unique keyword that defines a section" required>
+                                    placeholder="Unique keyword that defines a section" required id="headerContent">
                             @break
                             @case('text')
                                 <input type="hidden" name="type" value="text">
@@ -28,7 +28,7 @@
                             @case('image')
                                 <input type="hidden" name="type" value="image">
                                 <input class="form-control" name="content" type="text" value="{{ old('iamgeContent') }}"
-                                    placeholder="Import image address">
+                                    placeholder="Import image address" id="imageContent">
                             @break
                             @case('code')
                                 <input type="hidden" name="type" value="code">
@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button onclick="addContent({{ $type }})" class="btn btn-primary">Submit</button>
                 </div>
             </form>
         </div>
