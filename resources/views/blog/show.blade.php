@@ -1,26 +1,15 @@
 @extends('apps.blog')
 
 @section('content')
-    @if (session()->has('success'))
-        <div class="mb-2 alert alert-success">
-            {{ session()->get('success') }}
-        </div>
-    @endif
-    @isset($user)
-        <div class="my-2">
-            <h1 class="text-center mb-1 bg-dark text-white py-2 rounded">{{ $user }}'s Blogs</h1>
-            <hr>
-        </div>
-    @endisset
     <div class="my-2">
-        <div class="row bg-tint">
+        <div class="row bg-tint py-5">
             <h2 class="display-5 p-2 fw-bold ff-catamaran col-lg-8">
                 {{ $blog->title }}
             </h2>
             <div class="col-lg-4 d-flex flex-column">
-                <ul class="list-unstyled my-auto float-end">
+                <ul class="list-unstyled mb-2 my-lg-auto float-end">
                     @foreach ($blog->contents->where('type', 'header') as $item)
-                        <li class="ps-5"># <a href="#{{ Str::slug($item->content, '_') }}"
+                        <li class="ps-3 ps-xl-5"># <a href="#{{ Str::slug($item->content, '_') }}"
                                 class="text-dark">{{ $item->content }}</a></li>
                     @endforeach
                 </ul>
@@ -61,7 +50,7 @@
             @endif
         </div>
 
-        <div class="row">
+        <div class="row" id="contents">
             @foreach ($blog->contents as $content)
                 <div class="col-12 my-2 position-relative">
                     @switch($content->type)
@@ -105,7 +94,7 @@
                                     => $content->content])
                                 </div>
                             @endif
-                            <img src="{{ $content->content }}" alt="Not a valid image" class="mt-3" style="max-width: 100%">
+                            <img src="{{ $content->content }}" alt="Not a valid image" class="mt-3 w-100">
                         @break
                         @case('code')
                             @if ($blog->user->id === Auth::id())
