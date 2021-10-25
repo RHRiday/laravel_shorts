@@ -4,8 +4,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@1,500&display=swap');
 
-.bg-gray {
-    background-color: #adb5bd !important;
+body {
+    background-color: #aeb0ff75 !important;
+}
+
+.bg-tint {
+    background-color: #5897fb59 !important;
+}
+
+.bg-tint-light {
+    background-color: #ffffff26 !important;
 }
 
 .ff-catamaran {

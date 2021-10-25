@@ -13,7 +13,7 @@
         </div>
     @endisset
     <div class="my-2">
-        <div class="row bg-info">
+        <div class="row bg-tint">
             <h2 class="display-5 p-2 fw-bold ff-catamaran col-lg-8">
                 {{ $blog->title }}
             </h2>

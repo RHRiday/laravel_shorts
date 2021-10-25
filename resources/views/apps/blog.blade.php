@@ -15,7 +15,7 @@
                 <div class="order-2 order-lg-1">
                     <div class="p-2">
                         @auth
-                            <h4 class="fst-italic bg-gray py-2 text-center rounded">Add draft</h4>
+                            <h4 class="fst-italic bg-tint py-2 text-center rounded">Add draft</h4>
                             <form action="{{ route('blog.create') }}" method="POST">
                                 @csrf
                                 <div class="mb-2 row">
@@ -77,7 +77,7 @@
                 </div>
                 <div class="order-1 order-lg-2">
                     <div class="p-2">
-                        <h4 class="fst-italic bg-gray py-2 text-center rounded">Tags</h4>
+                        <h4 class="fst-italic bg-tint py-2 text-center rounded">Tags</h4>
                         <ol class="list-unstyled mb-0">
                             @forelse ($tags as $tag)
                                 <li><a href="{{ route('blog', ['tag', $tag]) }}">{{ $tag }}</a></li>
