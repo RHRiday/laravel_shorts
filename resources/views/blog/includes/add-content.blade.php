@@ -7,8 +7,6 @@
                 <h5 class="modal-title">Input the content</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            {{-- <form action="{{ route('blog.addContent', $blog->id) }}" method="post"> --}}
-            {{-- @csrf --}}
             <div class="modal-body d-flex justify-content-around">
                 <div class="col-10 mb-1">
                     @switch($type)
@@ -47,7 +45,6 @@
                 <button onclick="addContent('{{ $type }}' , {{ $blog->id }}, this)"
                     class="btn btn-primary">Submit</button>
             </div>
-            {{-- </form> --}}
         </div>
     </div>
 </div>

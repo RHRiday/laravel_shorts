@@ -163,8 +163,8 @@ class BlogController extends Controller
      */
     public function deleteContent(Content $content)
     {
-        $content->delete();
+        $data = $content->delete();
 
-        return redirect()->back();
+        return response()->json($data);
     }
 }

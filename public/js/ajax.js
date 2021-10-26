@@ -62,8 +62,8 @@ function updateContent(id, type, button) {
     $(button).prop('disabled', true);
     let content = $('#' + type + 'Content_' + id);
     $.ajax({
-        type: "post",
-        url: "/dokkoblog/content/" + id + '/edit',
+        type: "put",
+        url: "/dokkoblog/content/" + id + "/edit",
         data: {
             content: content.val()
         },
@@ -83,4 +83,16 @@ function changeContent(container, response) {
         // this is an image
         container.attr('src', response.content);
     }
+}
+
+function deleteContent(id, button) {
+    $(button).prop('disabled', true);
+    $.ajax({
+        type: "delete",
+        url: "/dokkoblog/content/" + id + "/delete",
+        success: function (response) {
+            $('.btn-close').trigger('click');
+            $('#content_' + id).parent().remove();
+        }
+    });
 }

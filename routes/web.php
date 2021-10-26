@@ -26,7 +26,7 @@ Route::prefix('dokkoblog')->group(function () {
     Route::post('/create', [BlogController::class, 'create'])->name('blog.create');
     Route::get('/{slug}', [BlogController::class, 'show'])->name('blog.show');
     Route::post('/{id}/update', [BlogController::class, 'addContent'])->name('blog.addContent');
-    Route::post('/content/{id}/edit', [BlogController::class, 'editContent'])->name('blog.editContent');
+    Route::put('/content/{id}/edit', [BlogController::class, 'editContent'])->name('blog.editContent');
     Route::delete('/{blog}/delete', [BlogController::class, 'destroy'])->name('blog.destroy');
     Route::delete('/content/{content}/delete', [BlogController::class, 'deleteContent'])->name('blog.deleteContent');
 });
