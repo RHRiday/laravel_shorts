@@ -135,7 +135,9 @@ class BlogController extends Controller
             'content' => $request->content,
         ]);
 
-        return redirect()->back();
+        $data = $content;
+
+        return response()->json($data);
     }
 
     /**

@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button onclick="addContent('{{ $type }}' , {{ $blog->id }})"
+                <button onclick="addContent('{{ $type }}' , {{ $blog->id }}, this)"
                     class="btn btn-primary">Submit</button>
             </div>
             {{-- </form> --}}

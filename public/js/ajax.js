@@ -4,8 +4,8 @@ $.ajaxSetup({
     }
 })
 
-function addContent(type, id) {
-    console.log(type);
+function addContent(type, id, button) {
+    $(button).prop('disabled', true);
     let content = $('#' + type + 'Content');
     $.ajax({
         type: "post",
@@ -16,9 +16,10 @@ function addContent(type, id) {
         },
         success: function (response) {
             content.val('');
-            $('trix-editor').html('');
+            $('trix-editor[input=' + type + 'Content]').html('');
             appendContent(response.type, response.content);
             $('.btn-close').trigger('click');
+            $(button).prop('disabled', false);
         }
     });
 }
@@ -55,5 +56,31 @@ function appendContent(type, content) {
         `</div>`;
 
     $('#contents').append(appendFinal);
-    console.log('success');
+}
+
+function updateContent(id, type, button) {
+    $(button).prop('disabled', true);
+    let content = $('#' + type + 'Content_' + id);
+    $.ajax({
+        type: "post",
+        url: "/dokkoblog/content/" + id + '/edit',
+        data: {
+            content: content.val()
+        },
+        success: function (response) {
+            container = $('#content_' + id);
+            changeContent(container, response);
+            $('.btn-close').trigger('click');
+            $(button).prop('disabled', false);
+        }
+    });
+}
+
+function changeContent(container, response) {
+    if (response.type == 'header' || response.type == 'text' || response.type == 'code') {
+        container.html(response.content);
+    } else {
+        // this is an image
+        container.attr('src', response.content);
+    }
 }

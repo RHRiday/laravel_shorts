@@ -30,7 +30,8 @@
                         <div class="modal-content">
                             <div class="modal-header alert alert-danger">
                                 <h5 class="modal-title">Confirm delete?</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
                             <div class="modal-body d-flex justify-content-around">
                                 <div class="mb-1">
@@ -67,7 +68,8 @@
                             <div class="bg-light p-2 fs-5 overflow-auto mt-3 rounded ff-catamaran"
                                 id="{{ Str::slug($content->content, '_') }}">
                                 <h3> <i class="fas fa-link text-info"></i>
-                                    {{ $content->content }}</h3>
+                                    <span id="content_{{ $content->id }}">{{ $content->content }}</span>
+                                </h3>
                             </div>
                         @break
                         @case('text')
@@ -80,7 +82,8 @@
                                     $content->content])
                                 </div>
                             @endif
-                            <div class="bg-light p-2 fs-5 overflow-auto mt-3 rounded ff-merryweather">
+                            <div id="content_{{ $content->id }}"
+                                class="bg-light p-2 fs-5 overflow-auto mt-3 rounded ff-merryweather">
                                 {!! $content->content !!}
                             </div>
                         @break
@@ -94,7 +97,8 @@
                                     => $content->content])
                                 </div>
                             @endif
-                            <img src="{{ $content->content }}" alt="Not a valid image" class="mt-3 w-100">
+                            <img id="content_{{ $content->id }}" src="{{ $content->content }}" alt="Not a valid image"
+                                class="mt-3 w-100">
                         @break
                         @case('code')
                             @if ($blog->user->id === Auth::id())
@@ -106,7 +110,8 @@
                                     $content->content])
                                 </div>
                             @endif
-                            <div class="bg-dark text-warning p-2 overflow-auto text-nowrap mt-3 ff-source-code">
+                            <div id="content_{{ $content->id }}"
+                                class="bg-dark text-warning p-2 overflow-auto text-nowrap mt-3 ff-source-code">
                                 {!! $content->content !!}
                             </div>
                         @break
