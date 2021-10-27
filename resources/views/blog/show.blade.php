@@ -2,10 +2,18 @@
 
 @section('content')
     <div class="my-2">
-        <div class="row bg-tint py-5">
-            <h2 class="display-5 p-2 fw-bold ff-catamaran col-lg-8">
-                {{ $blog->title }}
-            </h2>
+        <div class="row bg-tint py-3">
+            <div class="col-lg-8 py-3 py-md-0">
+                <div class="mb-2">
+                    @foreach ($blog->tags as $tag)
+                        <a href="{{ route('blog', ['tag', $tag->tag]) }}" class="small me-2">
+                            <i class="fas fa-tag align-middle"></i>{{ $tag->tag }}</a>
+                    @endforeach
+                </div>
+                <h2 class="display-5 p-2 fw-bold ff-catamaran">
+                    {{ $blog->title }}
+                </h2>
+            </div>
             <div class="col-lg-4 d-flex flex-column">
                 <ul class="list-unstyled mb-2 my-lg-auto float-end">
                     @foreach ($blog->contents->where('type', 'header') as $item)
@@ -139,21 +147,21 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body d-flex justify-content-around flex-wrap mb-3">
+                                <div class="modal-body d-flex justify-content-center flex-wrap mb-3">
 
-                                    <button class="btn btn-sm btn-primary mb-2" type="button" data-bs-toggle="modal"
+                                    <button class="btn btn-sm btn-primary m-2" type="button" data-bs-toggle="modal"
                                         data-bs-target="#headerInputModal"> <i class="fas fa-link"></i> Header</button>
                                     @include('blog.includes.add-content', ['type' => 'header'])
 
-                                    <button class="btn btn-sm btn-primary mb-2" type="button" data-bs-toggle="modal"
+                                    <button class="btn btn-sm btn-primary m-2" type="button" data-bs-toggle="modal"
                                         data-bs-target="#textInputModal"> <i class="fa fa-keyboard"></i> Text</button>
                                     @include('blog.includes.add-content', ['type' => 'text'])
 
-                                    <button class="btn btn-sm btn-primary mb-2" type="button" data-bs-toggle="modal"
+                                    <button class="btn btn-sm btn-primary m-2" type="button" data-bs-toggle="modal"
                                         data-bs-target="#imageInputModal"> <i class="fa fa-image"></i> Image</button>
                                     @include('blog.includes.add-content', ['type' => 'image'])
 
-                                    <button class="btn btn-sm btn-primary mb-2" type="button" data-bs-toggle="modal"
+                                    <button class="btn btn-sm btn-primary m-2" type="button" data-bs-toggle="modal"
                                         data-bs-target="#codeInputModal"> <i class="fa fa-code"></i> Code</button>
                                     @include('blog.includes.add-content', ['type' => 'code'])
 

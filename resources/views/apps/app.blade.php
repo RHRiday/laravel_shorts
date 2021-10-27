@@ -72,10 +72,10 @@
                     @guest
                         @if (Route::has('login'))
                             <li class="nav-item my-1 mx-lg-1 my-lg-0">
-                                <button type="button" class="btn btn-sm px-2 border-dark nav-link" data-bs-toggle="modal"
+                                <a class="btn btn-sm px-2 border-dark nav-link" data-bs-toggle="modal"
                                     data-bs-target="#login_modal">
                                     {{ __('Login') }}
-                                </button>
+                                </a>
 
                                 <!-- Modal -->
                                 <div class="modal fade" id="login_modal" tabindex="-1" aria-labelledby="loginModalLabel"
@@ -88,7 +88,7 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form method="POST" action="{{ route('login') }}">
+                                                <form method="POST" action="{{ route('login') }}" class="col-12 col-md-8 mx-auto">
                                                     @csrf
                                                     <div class="form-group row">
                                                         <div class="col-12 mb-3">
@@ -139,14 +139,15 @@
 
                         @if (Route::has('register'))
                             <li class="nav-item my-1 mx-lg-1 my-lg-0">
-                                <button type="button" class="btn btn-sm px-2 border-dark nav-link" data-bs-toggle="modal"
+                                <a class="btn btn-sm px-2 border-dark nav-link" data-bs-toggle="modal"
                                     data-bs-target="#register_modal">
                                     {{ __('Register') }}
-                                </button>
+                                </a>
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="register_modal" tabindex="-1" aria-labelledby="loginModalLabel"
-                                    aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+                                <div class="modal fade" id="register_modal" tabindex="-1"
+                                    aria-labelledby="loginModalLabel" aria-hidden="true" data-bs-backdrop="static"
+                                    data-bs-keyboard="false">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header card-header">
@@ -155,7 +156,7 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form method="POST" action="{{ route('register') }}">
+                                                <form method="POST" action="{{ route('register') }}" class="col-12 col-md-8 mx-auto">
                                                     @csrf
 
                                                     <div class="form-group row mb-2">
@@ -224,8 +225,9 @@
                         @endif
                     @else
                         <li class="nav-item">
-                            <a class="nav-link" href="#" id="userDropdown" role="button">
-                                <span class="me-2 small">{{ Auth::user()->name }}</span>
+                            <a class="nav-link text-center" href="#" id="userDropdown" role="button">
+                                <i class="far fa-user-circle align-middle me-1"></i><span
+                                    class="me-2 small">{{ Auth::user()->name }}</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -270,81 +272,7 @@
             });
         });
     </script>
-    <script src="{{ asset('js/ajax.js') }}">
-        // $.ajaxSetup({
-        //     headers: {
-        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        //     }
-        // })
-
-        // function addContent(type, id) {
-        //     switch (type) {
-        //         case 'text':
-        //             let content = $('#textContent').val();
-        //             $.ajax({
-        //                 type: "post",
-        //                 url: "/dokkoblog/" + id + "/update",
-        //                 data: {
-        //                     type: type,
-        //                     content: content
-        //                 },
-        //                 dataType: "dataType",
-        //                 success: function(response) {
-        //                     console.log('added!');
-        //                 }
-        //             });
-        //             break;
-        //         case 'header':
-        //             let content = $('#headerContent').val();
-        //             $.ajax({
-        //                 type: "post",
-        //                 url: "/dokkoblog/" + id + "/update",
-        //                 data: {
-        //                     type: type,
-        //                     content: content
-        //                 },
-        //                 dataType: "dataType",
-        //                 success: function(response) {
-        //                     console.log('added!');
-        //                 }
-        //             });
-        //             break;
-        //         case 'image':
-        //             let content = $('#imageContent').val();
-        //             $.ajax({
-        //                 type: "post",
-        //                 url: "/dokkoblog/" + id + "/update",
-        //                 data: {
-        //                     type: type,
-        //                     content: content
-        //                 },
-        //                 dataType: "dataType",
-        //                 success: function(response) {
-        //                     console.log('added!');
-        //                 }
-        //             });
-        //             break;
-        //         case 'code':
-        //             let content = $('#codeContent').val();
-        //             $.ajax({
-        //                 type: "post",
-        //                 url: "/dokkoblog/" + id + "/update",
-        //                 data: {
-        //                     type: type,
-        //                     content: content
-        //                 },
-        //                 dataType: "dataType",
-        //                 success: function(response) {
-        //                     console.log('added!');
-        //                 }
-        //             });
-        //             break;
-
-        //         default:
-        //             break;
-        //     }
-        // }
-    </script>
+    <script src="{{ asset('js/ajax.js') }}"></script>
 </body>
 
 </html>

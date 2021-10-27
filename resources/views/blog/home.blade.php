@@ -46,7 +46,7 @@
                                         {{ mb_substr(strip_tags($blog->contents->where('type', 'text')->first()->content), 0, 250) }}
                                     @endif
                                     <a href="{{ route('blog.show', $blog->slug) }}"
-                                        class="col-auto float-end border-info btn btn-sm">Read draft
+                                        class="col-auto float-end border-info btn btn-sm btn-info">Read draft
                                     </a>
                                 </p>
                                 <div class="my-2">

@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@1,500&display=swap');
 
 body {
-    background-color: #aeb0ff75 !important;
+    background-color: #e7e8ff !important;
 }
 
 .bg-tint {
@@ -13,7 +13,7 @@ body {
 }
 
 .bg-tint-light {
-    background-color: #ffffff26 !important;
+    background-color: #ffffff50 !important;
 }
 
 .ff-catamaran {
@@ -34,4 +34,16 @@ body {
 
 .ff-source-code {
     font-family: 'Source Code Pro', monospace;
+}
+
+@media only screen and (min-width: 1200px) {
+    .modal-dialog {
+        max-width: 60%;
+    }
+}
+
+@media only screen and (min-width: 576px) and (max-width:1200px) {
+    .modal-dialog {
+        max-width: 80%;
+    }
 }
