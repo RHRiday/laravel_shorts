@@ -50,8 +50,8 @@
                                     </a>
                                 </p>
                                 <div class="my-2">
-                                    <a href="{{ route('blog', ['user', $blog->user_id]) }}" class="text-decoration-none"><i
-                                            class="far fa-user-circle align-middle"></i>
+                                    <a href="{{ route('blog', ['user', $blog->user_id]) }}"
+                                        class="text-decoration-none"><i class="far fa-user-circle align-middle"></i>
                                         {{ $blog->user->name }}
                                     </a>
                                     <span class="col-4 mt-1 text-muted small float-end text-end"> — July 2, 2020</span>

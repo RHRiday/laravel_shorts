@@ -23,7 +23,11 @@
                         @break
                         @case('image')
                             <input id="imageContent_{{ $id }}" class="form-control" name="content" type="text"
-                                value="{{ $content }}" placeholder="Import image address">
+                                value="{{ $content }}" placeholder="Image url">
+                            <p class="my-2 px-1"><strong>Tip:</strong>
+                                Go to <a href="https://imgbb.com/" class="text-decoration-none"
+                                    target="_blank">imgbb.com</a> and generate an image URL.
+                            </p>
                         @break
                         @case('code')
                             <input id="codeContent_{{ $id }}" type="hidden" name="content"
@@ -38,7 +42,8 @@
                 </div>
             </div>
             <div class="modal-footer d-flex justify-content-between">
-                <button onclick="deleteContent({{ $id }},this)" class="btn btn-danger">Delete the content</button>
+                <button onclick="deleteContent({{ $id }},this)" class="btn btn-danger">Delete the
+                    content</button>
                 <button type="submit" onclick="updateContent({{ $id }},'{{ $type }}', this)"
                     class="btn btn-primary">Update</button>
             </div>

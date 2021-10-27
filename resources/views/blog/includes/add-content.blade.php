@@ -26,7 +26,11 @@
                         @case('image')
                             <input type="hidden" name="type" value="image">
                             <input class="form-control" name="content" type="text" value="{{ old('iamgeContent') }}"
-                                placeholder="Import image address" id="imageContent">
+                                placeholder="Image URL" id="imageContent">
+                            <p class="my-2 px-1"><strong>Tip:</strong>
+                                Go to <a href="https://imgbb.com/" class="text-decoration-none"
+                                    target="_blank">imgbb.com</a> and generate an image URL.
+                            </p>
                         @break
                         @case('code')
                             <input type="hidden" name="type" value="code">
