@@ -1,17 +1,6 @@
 @extends('apps.blog')
 
 @section('content')
-    @if (session()->has('success'))
-        <div class="mb-2 alert alert-success">
-            {{ session()->get('success') }}
-        </div>
-    @endif
-    @isset($user)
-        <div class="my-2">
-            <h1 class="text-center mb-1 bg-dark text-white py-2 rounded">{{ $user }}'s Blogs</h1>
-            <hr>
-        </div>
-    @endisset
     <div class="section my-5">
         <div class="container">
             <h2 class="display-3 bg-tint py-1 fw-bold text-center ff-catamaran">

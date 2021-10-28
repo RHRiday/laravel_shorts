@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    @yield('meta')
     <title>{{ $title }}</title>
+
 
     {{-- styles --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
@@ -243,14 +245,15 @@
                         <li class="mb-2">Designed and built with the motivation to improve my skills and save
                             information that I gather along the along the way.
                         </li>
-                        <li class="mb-2">Currently v1.0.2</li>
+                        <li class="mb-2">Currently v1.0.3</li>
                     </ul>
                 </div>
                 <div class="col-6 col-lg-2 offset-lg-1 mb-3">
                     <h5 class="ff-catamaran">Links</h5>
                     <ul class="list-unstyled">
                         @foreach ($sites as $site)
-                            <li class="mb-2"><a class="nav-link p-0" href="{{ route($site->route) }}">{{ $site->name }}</a></li>
+                            <li class="mb-2"><a class="nav-link p-0"
+                                    href="{{ route($site->route) }}">{{ $site->name }}</a></li>
                         @endforeach
                     </ul>
                 </div>

@@ -1,5 +1,14 @@
 @extends('apps.blog')
 
+@section('meta')
+    <meta name="title" content="{{ $blog->title }}">
+    <meta name="description"
+        content="{{ $blog->contents->where('type', 'text')->isEmpty() ? 'Content not found!!' : mb_substr(strip_tags($blog->contents->where('type', 'text')->first()->content), 0, 250) }}">
+    <meta name="keywords" content="@foreach ($blog->tags as $tag){{ $tag->tag . ',' }}@endforeach">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="author" content="Rifat Hossen Riday">
+@endsection
+
 @section('content')
     <div class="my-2">
         <div class="row bg-tint py-3">
