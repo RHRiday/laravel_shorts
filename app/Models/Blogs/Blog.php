@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\blog;
+namespace App\Models\Blogs;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

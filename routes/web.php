@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Blog\BlogController;
-use App\Http\Controllers\Faq\FaqController;
+use App\Http\Controllers\Blogs\BlogController;
+use App\Http\Controllers\Faqs\FaqController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
