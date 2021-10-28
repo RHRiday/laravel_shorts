@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Blogs;
+namespace App\Http\Controllers\Blog;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateBlogRequest;
-use App\Models\Blogs\Blog;
-use App\Models\Blogs\Content;
-use App\Models\Blogs\Tag;
+use App\Models\Blog\Blog;
+use App\Models\Blog\Content;
+use App\Models\Blog\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;

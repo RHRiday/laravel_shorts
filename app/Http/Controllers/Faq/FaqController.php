@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Faqs;
+namespace App\Http\Controllers\Faq;
 
 use App\Http\Controllers\Controller;
-use App\Models\Faqs\Question;
+use App\Models\Faq\Question;
 use Illuminate\Http\Request;
 
 class FaqController extends Controller

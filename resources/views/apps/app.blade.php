@@ -247,10 +247,10 @@
                     </ul>
                 </div>
                 <div class="col-6 col-lg-2 offset-lg-1 mb-3">
-                    <h5>Links</h5>
+                    <h5 class="ff-catamaran">Links</h5>
                     <ul class="list-unstyled">
                         @foreach ($sites as $site)
-                            <li class="mb-2"><a href="{{ route($site->route) }}">{{ $site->name }}</a></li>
+                            <li class="mb-2"><a class="nav-link p-0" href="{{ route($site->route) }}">{{ $site->name }}</a></li>
                         @endforeach
                     </ul>
                 </div>
