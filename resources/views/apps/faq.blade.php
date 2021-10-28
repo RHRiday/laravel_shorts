@@ -6,7 +6,7 @@
 @section('app')
     <div class="bg-tint py-3">
         <div class="col-12 text-center">
-            <h1 class="my_h1 ff-catamaran my-1 my-md-4"> <span class="type">Frequently asked dokko</span></h1>
+            <h1 class="ff-catamaran my-1 my-md-2">< <span class="typed"></span> ></h1>
             <p class="ff-catamaran">Never forgets a thing</p>
         </div>
         <div class="col-12">
@@ -36,7 +36,7 @@
                                     <div class="col-md-8 mb-3">
                                         <div class="form-floating">
                                             <textarea class="form-control" id="answer"
-                                                placeholder="{{ __('Frequently forgotten answer') }}"></textarea>
+                                                placeholder="{{ __('Frequently forgotten answer') }}" required></textarea>
                                             <label for="answer">{{ __('Frequently forgotten answer') }}</label>
                                         </div>
                                     </div>
@@ -72,7 +72,7 @@
                                 {{ $loop->index + 1 . '. ' . $faq->question }}
                             </button>
                         </h2>
-                        <div id="{{ Str::slug($faq->question, '_') . $faq->id }}" class="accordion-collapse collapse show"
+                        <div id="{{ Str::slug($faq->question, '_') . $faq->id }}" class="accordion-collapse collapse"
                             aria-labelledby="panelsStayOpen-headingOne">
                             <div class="accordion-body">
                                 <pre class="ff-source-code">{{ $faq->answer }}</pre>

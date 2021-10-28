@@ -232,10 +232,37 @@
     </nav>
     @yield('app')
 
+    <footer class="bg-tint-light mt-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-3 mb-3">
+                    <a class="d-inline-flex align-items-center mb-2 link-dark text-decoration-none" href="/">
+                        <span class="fs-5 ff-maven">&copy; Rifat Hossen Riday</span>
+                    </a>
+                    <ul class="list-unstyled small text-muted">
+                        <li class="mb-2">Designed and built with the motivation to improve my skills and save
+                            information that I gather along the along the way.
+                        </li>
+                        <li class="mb-2">Currently v1.0.1</li>
+                    </ul>
+                </div>
+                <div class="col-6 col-lg-2 offset-lg-1 mb-3">
+                    <h5>Links</h5>
+                    <ul class="list-unstyled">
+                        @foreach ($sites as $site)
+                            <li class="mb-2"><a href="{{ route($site->route) }}">{{ $site->name }}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     {{-- scripts --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="{{ asset('js/notify.min.js') }}"></script>
 
     <script>
@@ -245,11 +272,25 @@
             //     className: 'success',
             //     position: 'bottom center'
             // });
+            $("#search").on("keyup", function() {
+                $('.accordion-collapse').removeClass('show');
+                var value = $(this).val().toLowerCase();
+                $("button.accordion-button").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
             $('.blog_tags').select2({
                 tags: true,
                 placeholder: "Ex: ReactJs",
                 maximumSelectionLength: -1,
                 width: '100%'
+            });
+
+            new Typed('.typed', {
+                strings: ['Frequently asked dokko'],
+                typeSpeed: 100,
+                loop: true,
+                cursorChar: '',
             });
 
             document.addEventListener("trix-file-accept", event => {
