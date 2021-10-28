@@ -114,7 +114,7 @@ function addFfq(button) {
                             <button class="accordion-button ff-merriweather" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#new_` + response.id + `" aria-expanded="true"
                                 aria-controls="new_` + response.id + `">
-                                new:` + response.question + `
+                                <strong>New: </strong>` + response.question + `
                             </button>
                         </h2>
                         <div id="new_` + response.id + `" class="accordion-collapse collapse show"

@@ -243,7 +243,7 @@
                         <li class="mb-2">Designed and built with the motivation to improve my skills and save
                             information that I gather along the along the way.
                         </li>
-                        <li class="mb-2">Currently v1.0.1</li>
+                        <li class="mb-2">Currently v1.0.2</li>
                     </ul>
                 </div>
                 <div class="col-6 col-lg-2 offset-lg-1 mb-3">
