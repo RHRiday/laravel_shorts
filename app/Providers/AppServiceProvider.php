@@ -25,6 +25,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // View::share('sites', DB::table('projects')->get());
+        View::share('sites', DB::table('projects')->get());
     }
 }

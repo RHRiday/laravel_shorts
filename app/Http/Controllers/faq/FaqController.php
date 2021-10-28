@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\faq;
+namespace App\Http\Controllers\Faq;
 
 use App\Http\Controllers\Controller;
 use App\Models\faq\Question;
