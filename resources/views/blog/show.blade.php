@@ -91,7 +91,7 @@
                                 </div>
                             @endif
                             <div id="content_{{ $content->id }}"
-                                class="bg-light p-2 fs-5 overflow-auto mt-3 rounded ff-merryweather">
+                                class="bg-light p-2 fs-5 overflow-auto mt-3 rounded ff-merriweather">
                                 {!! $content->content !!}
                             </div>
                         @break

@@ -27,7 +27,7 @@ function addContent(type, id, button) {
 function appendContent(type, content) {
     switch (type) {
         case 'text':
-            toAppend = `<div class="bg-light p-2 fs-5 overflow-auto mt-3 rounded ff-merryweather">` + content + `</div>`;
+            toAppend = `<div class="bg-light p-2 fs-5 overflow-auto mt-3 rounded ff-merriweather">` + content + `</div>`;
             break;
 
         case 'header':
@@ -93,6 +93,23 @@ function deleteContent(id, button) {
         success: function (response) {
             $('.btn-close').trigger('click');
             $('#content_' + id).parent().remove();
+        }
+    });
+}
+
+function addFfq(button) {
+    $(button).prop('disabled', true);
+    $.ajax({
+        type: "post",
+        url: "/dokkofaq/create",
+        data: {
+            question: $('#question').val(),
+            answer: $('#answer').val(),
+            tag: $('#tag').val()
+        },
+        success: function (response) {
+            $('.btn-close').trigger('click');
+            console.log(response);
         }
     });
 }

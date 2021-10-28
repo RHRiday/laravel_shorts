@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Blog\BlogController;
+use App\Http\Controllers\faq\FaqController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,10 @@ Route::prefix('dokkoblog')->group(function () {
     Route::put('/content/{id}/edit', [BlogController::class, 'editContent'])->name('blog.editContent');
     Route::delete('/{blog}/delete', [BlogController::class, 'destroy'])->name('blog.destroy');
     Route::delete('/content/{content}/delete', [BlogController::class, 'deleteContent'])->name('blog.deleteContent');
+});
+Route::prefix('dokkofaq')->group(function () {
+    Route::get('/', [FaqController::class, 'index'])->name('faq');
+    Route::post('/create', [FaqController::class, 'create'])->name('faq.create');
 });
 
 // Route::get('shaping', [BlogController::class, 'shaping']);

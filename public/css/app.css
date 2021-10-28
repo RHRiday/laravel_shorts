@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@1,500&display=swap');
 
@@ -24,8 +24,8 @@ body {
     font-family: 'Maven Pro', sans-serif;
 }
 
-.ff-merryweather{
-    font-family: 'Merriweather', serif;
+.ff-merriweather{
+    font-family: 'Merriweather Sans', sans-serif;
 }
 
 .ff-poppins {
