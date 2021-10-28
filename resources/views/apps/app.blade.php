@@ -34,29 +34,13 @@
 
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
+                    @foreach ($sites as $site)
+                        @if ($site->name != $title)
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route($site->route) }}">{{ $site->name }}</a>
                             </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                    </li>
+                        @endif
+                    @endforeach
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -88,7 +72,8 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form method="POST" action="{{ route('login') }}" class="col-12 col-md-8 mx-auto">
+                                                <form method="POST" action="{{ route('login') }}"
+                                                    class="col-12 col-md-8 mx-auto">
                                                     @csrf
                                                     <div class="form-group row">
                                                         <div class="col-12 mb-3">
@@ -106,10 +91,9 @@
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="col-12 mb-3">
-                                                            <input id="password" type="password"
+                                                            <input type="password" name="password"
                                                                 class="form-control @error('password') is-invalid @enderror"
-                                                                placeholder="{{ __('Password') }}" name="password"
-                                                                required>
+                                                                placeholder="{{ __('Password') }}" required>
                                                             @error('password')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
@@ -156,7 +140,8 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form method="POST" action="{{ route('register') }}" class="col-12 col-md-8 mx-auto">
+                                                <form method="POST" action="{{ route('register') }}"
+                                                    class="col-12 col-md-8 mx-auto">
                                                     @csrf
 
                                                     <div class="form-group row mb-2">
@@ -176,7 +161,7 @@
 
                                                     <div class="form-group row mb-2">
                                                         <div class="col-12">
-                                                            <input id="email" type="email"
+                                                            <input type="email"
                                                                 class="form-control @error('email') is-invalid @enderror"
                                                                 name="email" value="{{ old('email') }}" required
                                                                 autocomplete="email"
@@ -191,7 +176,7 @@
 
                                                     <div class="form-group row mb-2">
                                                         <div class="col-12">
-                                                            <input id="password" type="password"
+                                                            <input type="password"
                                                                 placeholder="{{ __('Password (6 to 20 characters)') }}"
                                                                 class="form-control @error('password') is-invalid @enderror"
                                                                 name="password" required autocomplete="new-password">

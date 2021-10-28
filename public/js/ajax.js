@@ -108,8 +108,29 @@ function addFfq(button) {
             tag: $('#tag').val()
         },
         success: function (response) {
+            let accordion = `
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                            <button class="accordion-button ff-merriweather" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#new_` + response.id + `" aria-expanded="true"
+                                aria-controls="new_` + response.id + `">
+                                new:` + response.question + `
+                            </button>
+                        </h2>
+                        <div id="new_` + response.id + `" class="accordion-collapse collapse show"
+                            aria-labelledby="panelsStayOpen-headingOne">
+                            <div class="accordion-body">
+                                <pre class="ff-source-code">` + response.answer + `</pre>
+                            </div>
+                        </div>
+                    </div>
+                `;
             $('.btn-close').trigger('click');
-            console.log(response);
+            $('#question').val('');
+            $('#answer').val('');
+            $('#tag').val('');
+            $('#accordionPanelsStayOpen').prepend(accordion);
+            $(button).prop('disabled', false);
         }
     });
 }

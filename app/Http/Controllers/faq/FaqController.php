@@ -8,10 +8,16 @@ use Illuminate\Http\Request;
 
 class FaqController extends Controller
 {
+    /**
+     * Collects all the FAQ information
+     * 
+     * return the corresponding view
+     */
     public function index()
     {
         return view('apps.faq',[
-            'faqs' => Question::all()->sortBy('question')
+            'faqs' => Question::all()->sortBy('question'),
+            'uniqueTag' => array_unique(Question::pluck('tag')->toArray())
         ]);
     }
 
@@ -27,7 +33,7 @@ class FaqController extends Controller
         $data = Question::create([
             'question' => $request->question,
             'answer' => $request->answer,
-            'tag' => $request->tag,
+            'tag' => strtolower($request->tag),
         ]);
 
         return response()->json($data);
