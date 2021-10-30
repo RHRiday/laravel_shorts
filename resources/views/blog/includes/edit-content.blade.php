@@ -30,11 +30,12 @@
                             </p>
                         @break
                         @case('code')
-                            <input id="codeContent_{{ $id }}" type="hidden" name="content"
-                                value="{{ $content }}" required />
-                            <trix-editor input="codeContent_{{ $id }}"
-                                placeholder="Write your content here. You can also use this as an html codepen.">
-                            </trix-editor>
+                            <div class="form-floating">
+                                <textarea class="form-control" name="content" placeholder="Paste your code here"
+                                    id="codeContent_{{ $id }}" style="height: 100px"
+                                    value="{{ $content }}">{{ $content }}</textarea>
+                                <label for="codeContent_{{ $id }}">Paste your code here</label>
+                            </div>
                         @break
                         @default
 

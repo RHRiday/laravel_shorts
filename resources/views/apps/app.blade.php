@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
     <link rel="stylesheet" href="{{ asset('css/trix.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/highlightjs.css') }}">
 
     {{-- icons --}}
     <script src="https://kit.fontawesome.com/43b42e8e8a.js"></script>
@@ -245,7 +246,7 @@
                         <li class="mb-2">Designed and built with the motivation to improve my skills and save
                             information that I gather along the along the way.
                         </li>
-                        <li class="mb-2">Currently v1.0.3</li>
+                        <li class="mb-2">Currently v1.0.4</li>
                     </ul>
                 </div>
                 <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -266,6 +267,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
     <script src="{{ asset('js/notify.min.js') }}"></script>
 
     <script>
@@ -298,6 +300,12 @@
 
             document.addEventListener("trix-file-accept", event => {
                 event.preventDefault()
+            });
+            hljs.highlightAll();
+        });
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelectorAll('.code').forEach((block) => {
+                hljs.highlightBlock(block);
             });
         });
     </script>

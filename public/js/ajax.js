@@ -39,7 +39,7 @@ function appendContent(type, content) {
             break;
 
         case 'code':
-            toAppend = `<div class="bg-dark text-warning p-2 overflow-auto text-nowrap mt-3 ff-source-code">` + content + `</div>`;
+            toAppend = `<div class="p-2 mt-3 ff-source-code"><pre class="code">` + content + `</pre></div>`;
             break;
 
         default:
@@ -77,7 +77,10 @@ function updateContent(id, type, button) {
 }
 
 function changeContent(container, response) {
-    if (response.type == 'header' || response.type == 'text' || response.type == 'code') {
+    if (response.type == 'header' || response.type == 'code') {
+        container.text(response.content);
+    } else if (response.type == 'text') {
+        // this is a text
         container.html(response.content);
     } else {
         // this is an image

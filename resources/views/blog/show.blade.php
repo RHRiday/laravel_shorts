@@ -127,9 +127,8 @@
                                     $content->content])
                                 </div>
                             @endif
-                            <div id="content_{{ $content->id }}"
-                                class="bg-dark text-warning p-2 overflow-auto text-nowrap mt-3 ff-source-code">
-                                {!! $content->content !!}
+                            <div class="p-2 mt-3 ff-source-code">
+                                <pre class="code" id="content_{{ $content->id }}">{{ $content->content }}</pre>
                             </div>
                         @break
                         @default
