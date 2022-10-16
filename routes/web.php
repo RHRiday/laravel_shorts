@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 Auth::routes();
 
 Route::prefix('dokkoblog')->group(function () {
@@ -36,5 +36,3 @@ Route::prefix('dokkofaq')->group(function () {
     Route::post('/create', [FaqController::class, 'create'])->name('faq.create');
 });
 Route::resource('contacts', ContactController::class);
-
-// Route::get('shaping', [BlogController::class, 'shaping']);

@@ -247,7 +247,7 @@
                         <li class="mb-2">Designed and built with the motivation to improve my skills and save
                             information that I gather along the along the way.
                         </li>
-                        <li class="mb-2">Currently v1.0.4</li>
+                        <li class="mb-2">Currently {{ env('APP_VERSION') }}</li>
                     </ul>
                 </div>
                 <div class="col-6 col-lg-2 offset-lg-1 mb-3">

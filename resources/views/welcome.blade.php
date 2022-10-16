@@ -1,8 +1,8 @@
 @extends('apps.app', [
-'title' => 'RHRiday',
-'headerRoute' => 'generated::suxawK8XAK7lb7UA'
+    'title' => 'RHRiday',
+    'headerRoute' => 'home',
 ])
 
 @section('app')
-    <a href="{{ route('blog') }}">Blog</a>
+    <h2 class="text-center ff-maven my-1">Welcome to RHRiday's Laravel Learning Drafts</h2>
 @endsection

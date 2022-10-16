@@ -1,4 +1,4 @@
-# About this project
+# About this project (currently v1.1.0)
 Small [Laravel](https://laravel.com/) projects while learning the framework.
 
 
@@ -74,6 +74,11 @@ Small [Laravel](https://laravel.com/) projects while learning the framework.
 
 ### What I learned new
 - Laravel components
+- Making global variable for all blade files.
+    [in `app\Providers\AppServiceProvider.php` add the following code inside `boot` method]
+    ```
+        View::share('NAME', VALUE);
+    ```
 - Laravel custom error message
     [in `app\Exeptions\Handler.php` add the following code]
     ```
@@ -85,9 +90,24 @@ Small [Laravel](https://laravel.com/) projects while learning the framework.
         }
     ```
 
-## Getting Started
+### Getting Started
 > use following credentials to login:
 
 |**Email**       | **Password** |
 |----------------|--------------|
 |pondit@admin.com|ponditadmin   |
+
+## Contacts features
+- View contacts with multiple numbers.
+- Add and Edit contacts.
+- Search any contact by the name or number.
+
+### What I learned new
+- Using laravel with [jQuery Datatables](https://datatables.net)
+- Building single page application with ajax.
+
+### Technologies used
+- Laravel [v8.4]
+- JavaScript
+    - jQuery [v3.2.1]
+    - DataTable [v1.10.25]
