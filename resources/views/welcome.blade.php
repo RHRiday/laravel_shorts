@@ -1,3 +1,8 @@
-@extends('apps.app')
+@extends('apps.app', [
+'title' => 'RHRiday',
+'headerRoute' => 'generated::suxawK8XAK7lb7UA'
+])
 
-<a href="{{ route('blog') }}">Blog</a>
+@section('app')
+    <a href="{{ route('blog') }}">Blog</a>
+@endsection

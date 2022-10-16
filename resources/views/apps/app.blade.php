@@ -11,6 +11,7 @@
 
 
     {{-- styles --}}
+    <link rel="stylesheet" href="{{ asset('js/jquery/datatables.min.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
     <link rel="stylesheet" href="{{ asset('css/trix.css') }}">
@@ -263,53 +264,17 @@
     </footer>
 
     {{-- scripts --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{{ asset('js/jquery/jquery.min.js') }}"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+    <script src="{{ asset('js/jquery/datatables.min.js') }}" defer></script>
+    <script src="{{ asset('js/jquery/datatables.bootstrap.min.js') }}" defer></script>
     <script src="{{ asset('js/notify.min.js') }}"></script>
-
-    <script>
-        $(document).ready(function() {
-            // $('button[type=submit]').notify('Done', {
-            //     autoHideDelay: 3000,
-            //     className: 'success',
-            //     position: 'bottom center'
-            // });
-            $("#search").on("keyup", function() {
-                $('.accordion-collapse').removeClass('show');
-                var value = $(this).val().toLowerCase();
-                $("button.accordion-button").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-            $('.blog_tags').select2({
-                tags: true,
-                placeholder: "Ex: ReactJs",
-                maximumSelectionLength: -1,
-                width: '100%'
-            });
-
-            new Typed('.typed', {
-                strings: ['Frequently asked dokko'],
-                typeSpeed: 100,
-                loop: true,
-                cursorChar: '',
-            });
-
-            document.addEventListener("trix-file-accept", event => {
-                event.preventDefault()
-            });
-            hljs.highlightAll();
-        });
-        document.addEventListener('DOMContentLoaded', (event) => {
-            document.querySelectorAll('.code').forEach((block) => {
-                hljs.highlightBlock(block);
-            });
-        });
-    </script>
     <script src="{{ asset('js/ajax.js') }}"></script>
+    @yield('js')
 </body>
 
 </html>

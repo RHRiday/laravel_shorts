@@ -137,3 +137,48 @@ function addFfq(button) {
         }
     });
 }
+
+function addContact(button) {
+    $(button).prop('disabled', true);
+    $.ajax({
+        type: "post",
+        url: "/contacts",
+        data: {
+            name: $('#c_name').val(),
+            f_name: $('#f_name').val(),
+            priority: $('#priority').val(),
+            numbers: $('.number').map(function(i, el) {
+                return el.value;
+            }).get(),
+            availability: $('.avb').map(function(i, el) {
+                return el.value;
+            }).get(),
+        },
+        success: function (response) {
+            console.log(response);
+            let accordion = `
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                            <button class="accordion-button ff-merriweather" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#new_` + response.id + `" aria-expanded="true"
+                                aria-controls="new_` + response.id + `">
+                                <strong>New: </strong>` + response.name + `
+                            </button>
+                        </h2>
+                        <div id="new_` + response.id + `" class="accordion-collapse collapse show"
+                            aria-labelledby="panelsStayOpen-headingOne">
+                            <div class="accordion-body">
+                                <pre class="ff-source-code">` + response.f_name + `</pre>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            $('.btn-close').trigger('click');
+            $('#c_name').val('');
+            $('#f_name').val('');
+            $('#priority').val('');
+            $('#accordionPanelsStayOpen').prepend(accordion);
+            $(button).prop('disabled', false);
+        }
+    });
+}

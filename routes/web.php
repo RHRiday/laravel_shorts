@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Blog\BlogController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Faq\FaqController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -34,5 +35,6 @@ Route::prefix('dokkofaq')->group(function () {
     Route::get('/', [FaqController::class, 'index'])->name('faq');
     Route::post('/create', [FaqController::class, 'create'])->name('faq.create');
 });
+Route::resource('contacts', ContactController::class);
 
 // Route::get('shaping', [BlogController::class, 'shaping']);

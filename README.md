@@ -1,64 +1,93 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# About this project
+Small [Laravel](https://laravel.com/) projects while learning the framework.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+## Blog features
+- View blogs as a guest.
+- Register & Login as an user.
+- Logged user can post and view blogs.
+- User can edit or delete own posts.
+- Post can be filtered by tag or user that posted.
+- Duplication will be validated.
+- Feedback on validation error.
+- Blog pagination.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### What I learned new
+- Store files.
+- Migrations in Laravel applications.
+- Authenticate users before performing an action.
+- Editable and dynamic `<option>`.
+- Rendering 404 page.
+- Pagination according to data.
+- Laravel Mix.
+- Run front-end assets in Laravel applications.
+- Creating slugs.
+- Deploying Laravel apps to heroku
+    - Create a `Procfile`
+    - Write `web: vendor/bin/heroku-php-apache2 public` in the Procfile
+    - Add all the `env` variables ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `APP_DEBUG`, `APP_KEY`, `APP_NAME`, `DB_$vars` are compulsory.
+    - Make sure to set `buildpacks` in this order (use command `heroku buildpacks add $BUILDPACK_NAME`)
+        > 1. heroku/node
+        > 2. heroku/php 
+    - Run `heroku run php artisan migrate -a $APP_NAME` for database migration.
+    - Run `heroku run npm i -a $APP_NAME` for installing node packages.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Technologies used
+- Laravel
+- Bootstrap
+- FontAwesome
+- FreeMySqlHosting
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## FAQ features
+1. Admin Login
+    - Dashboard
+    - Manage FAQs (CRUD)
+    - Drag & Drop to sort quickly
+    - Verification message on every action
+2. Visitors view
+    - Search any FAQ instantly
+    - Accordion FAQ dropdown
 
-## Learning Laravel
+### Migrations
+> User
+- name
+- email
+- password
+- role (default: 2) `[1 => 'super-admin', 2 => 'admin']`
+> FAQ
+- question
+- answer
+- priority
+- publication_status `[0 => Unpublished, 1 => Published]`
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Technologies used
+- Laravel [v8.4]
+- JavaScript
+    - jQuery [v3.2.1]
+    - DataTable [v1.10.25]
+    - jQuery UI [v1.12.1]
+    - TypedJS [v2.0.12]
+    - metisMenu [v3.3]
+    - alertifyJs [v1.13]
+- Bootstrap `['home' => v5.0.2, 'admin' => v3.3.7]`
+- FontAwesome [v4.7]
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### What I learned new
+- Laravel components
+- Laravel custom error message
+    [in `app\Exeptions\Handler.php` add the following code]
+    ```
+        protected function unauthenticated($request, AuthenticationException $exception)
+        {
+            return $request->expectsJson()
+                ? response()->json(['message' => $exception->getMessage()], 401)
+                : redirect()->guest(route('login'))->with('message', 'You need to login first');
+        }
+    ```
 
-## Laravel Sponsors
+## Getting Started
+> use following credentials to login:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+|**Email**       | **Password** |
+|----------------|--------------|
+|pondit@admin.com|ponditadmin   |
