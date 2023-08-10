@@ -3,6 +3,7 @@
 use App\Http\Controllers\Blog\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Faq\FaqController;
+use App\Http\Controllers\StdAttController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -36,3 +37,6 @@ Route::prefix('dokkofaq')->group(function () {
     Route::post('/create', [FaqController::class, 'create'])->name('faq.create');
 });
 Route::resource('contacts', ContactController::class);
+Route::get('attendances/{student}', [StdAttController::class, 'show'])->name('attendances.show');
+Route::post('attendances/{stdAtt}', [StdAttController::class, 'destroy'])->name('attendances.destroy');
+Route::resource('attendances', StdAttController::class)->only(['index', 'store']);

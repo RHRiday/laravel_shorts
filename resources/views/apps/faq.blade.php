@@ -88,23 +88,12 @@
 @section('js')
     <script>
         $(document).ready(function() {
-            // $('button[type=submit]').notify('Done', {
-            //     autoHideDelay: 3000,
-            //     className: 'success',
-            //     position: 'bottom center'
-            // });
             $("#search").on("keyup", function() {
                 $('.accordion-collapse').removeClass('show');
                 var value = $(this).val().toLowerCase();
                 $("button.accordion-button").filter(function() {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
-            });
-            $('.blog_tags').select2({
-                tags: true,
-                placeholder: "Ex: ReactJs",
-                maximumSelectionLength: -1,
-                width: '100%'
             });
 
             new Typed('.typed', {
@@ -114,15 +103,7 @@
                 cursorChar: '',
             });
 
-            document.addEventListener("trix-file-accept", event => {
-                event.preventDefault()
-            });
             hljs.highlightAll();
-        });
-        document.addEventListener('DOMContentLoaded', (event) => {
-            document.querySelectorAll('.code').forEach((block) => {
-                hljs.highlightBlock(block);
-            });
         });
     </script>
 @endsection

@@ -8,8 +8,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @yield('meta')
     <title>{{ $title }}</title>
-
-
+    
+    
     {{-- styles --}}
     <link rel="stylesheet" href="{{ asset('js/jquery/datatables.min.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('css/trix.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/highlightjs.css') }}">
+    @yield('styles')
 
     {{-- icons --}}
     <script src="https://kit.fontawesome.com/43b42e8e8a.js"></script>

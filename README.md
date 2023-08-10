@@ -1,4 +1,4 @@
-# About this project (currently v1.1.0)
+# About this project (currently v1.2.0)
 Small [Laravel](https://laravel.com/) projects while learning the framework.
 
 
@@ -111,3 +111,15 @@ Small [Laravel](https://laravel.com/) projects while learning the framework.
 - JavaScript
     - jQuery [v3.2.1]
     - DataTable [v1.10.25]
+
+## Attendance features
+- View student attendances
+- Add or Delete an attendance
+- Keep track of payment dates
+
+### What I learned new
+- Using external classes on blade files.
+    [in `config\app.php` add the required class inside `aliases` array]
+    ```
+        'Carbon' => Illumiate\Facade\Carbon::class;
+    ```
