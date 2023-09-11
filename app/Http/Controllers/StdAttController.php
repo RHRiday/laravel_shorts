@@ -30,13 +30,14 @@ class StdAttController extends Controller
     public function store(Request $request)
     {
         if ($request->validation === Env::get('IDENTITY')) {
-            StdAtt::create([
+            $att = StdAtt::create([
                 'name' => $request->name,
                 'att_date' => $request->att_date,
                 'payment' => $request->payment,
             ]);
+            return redirect(route('attendances.index'))->with('success', 'Attendance added!')->with('id', $att->id);
         }
-        return redirect(route('attendances.index'));
+        return redirect(route('attendances.index'))->with('fail', 'Attendance failed!');
     }
 
     /**
