@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Contact\Contact;
 use App\Models\Contact\ContactItem;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ContactController extends Controller
 {
@@ -25,13 +26,22 @@ class ContactController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Download resource as pdf.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function download()
     {
-        //
+        // return view('apps.contacts_download', [
+        //     'contacts' => Contact::all()->sortBy([
+        //         ['name', 'asc']
+        //     ])
+        // ]);
+        return Pdf::loadView('apps.contacts_download', [
+            'contacts' => Contact::all()->sortBy([
+                ['name', 'asc']
+            ])
+        ])->download('Contacts-' . date('dMY') . '.pdf');
     }
 
     /**

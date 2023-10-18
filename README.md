@@ -1,4 +1,4 @@
-# About this project (currently v1.2.0)
+# About this project (currently v1.3)
 Small [Laravel](https://laravel.com/) projects while learning the framework.
 
 
@@ -101,17 +101,19 @@ Small [Laravel](https://laravel.com/) projects while learning the framework.
 - View contacts with multiple numbers.
 - Add and Edit contacts.
 - Search any contact by the name or number.
+- Download contacts
 
 ### What I learned new
 - Using laravel with [jQuery Datatables](https://datatables.net)
 - Building single page application with ajax.
+- Using DomPdf package
 
 ### Technologies used
 - Laravel [v8.4]
 - JavaScript
     - jQuery [v3.2.1]
     - DataTable [v1.10.25]
-
+- DomPdf [v2.0.1]
 ## Attendance features
 - View student attendances
 - Add or Delete an attendance

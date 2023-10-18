@@ -36,6 +36,7 @@ Route::prefix('dokkofaq')->group(function () {
     Route::get('/', [FaqController::class, 'index'])->name('faq');
     Route::post('/create', [FaqController::class, 'create'])->name('faq.create');
 });
+Route::get('contacts-download', [ContactController::class, 'download'])->name('contacts.download');
 Route::resource('contacts', ContactController::class);
 Route::get('attendances/{student}', [StdAttController::class, 'show'])->name('attendances.show');
 Route::post('attendances/{stdAtt}', [StdAttController::class, 'destroy'])->name('attendances.destroy');
