@@ -52,7 +52,7 @@
                                     placeholder="01xxxxxxxxx">
                               </div>
                               <div class="col-2 mb-2">
-                                 <select class="custom-select avb">
+                                 <select class="custom-select form-control avb">
                                     <option value="1">On</option>
                                     <option value="0">Unavailable</option>
                                  </select>
@@ -143,7 +143,7 @@
                                         required placeholder="01xxxxxxxxx">
                                 </div>
                                 <div class="col-2 mb-2">
-                                    <select class="custom-select avb">
+                                    <select class="custom-select form-control avb">
                                         <option value="1">On</option>
                                         <option value="0">Unavailable</option>
                                     </select>

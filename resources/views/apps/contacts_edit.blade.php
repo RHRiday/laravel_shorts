@@ -39,7 +39,7 @@
                                             placeholder="01xxxxxxxxx" value="{{ $item->number }}">
                                     </div>
                                     <div class="col-2 mb-2">
-                                        <select class="custom-select" name="avb[]">
+                                        <select class="custom-select form-control" name="avb[]">
                                             <option value="1" {{ $item->av ? 'selected' : '' }}>On</option>
                                             <option value="0" {{ $item->av ? '' : 'selected' }}>Unavailable</option>
                                         </select>
@@ -65,7 +65,7 @@
                                 required placeholder="01xxxxxxxxx">
                         </div>
                         <div class="col-2 mb-2">
-                            <select class="custom-select" name="avb[]">
+                            <select class="custom-select form-control" name="avb[]">
                                 <option value="1">On</option>
                                 <option value="0">Unavailable</option>
                             </select>

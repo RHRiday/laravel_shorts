@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BankStatementController;
 use App\Http\Controllers\Blog\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Faq\FaqController;
@@ -38,6 +39,7 @@ Route::prefix('dokkofaq')->group(function () {
 });
 Route::get('contacts-download', [ContactController::class, 'download'])->name('contacts.download');
 Route::resource('contacts', ContactController::class);
+Route::resource('statements', BankStatementController::class);
 Route::get('attendances/{student}', [StdAttController::class, 'show'])->name('attendances.show');
 Route::post('attendances/{stdAtt}', [StdAttController::class, 'destroy'])->name('attendances.destroy');
 Route::resource('attendances', StdAttController::class)->only(['index', 'store']);

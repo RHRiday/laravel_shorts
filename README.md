@@ -1,4 +1,4 @@
-# About this project (currently v1.3)
+# About this project (currently v1.4)
 Small [Laravel](https://laravel.com/) projects while learning the framework.
 
 
@@ -125,3 +125,17 @@ Small [Laravel](https://laravel.com/) projects while learning the framework.
     ```
         'Carbon' => Illumiate\Facade\Carbon::class;
     ```
+
+## BankStatement features
+- View statements by date.
+- Peak at current balance.
+- Add a particular statement for a day.
+
+### What I learned new
+- Grouping of data
+
+### Technologies used
+- Laravel [v8.4]
+- JavaScript
+    - jQuery [v3.2.1]
+    - DataTable [v1.10.25]
