@@ -1,4 +1,4 @@
-# About this project (currently v1.4)
+# About this project (currently v1.4.1)
 Small [Laravel](https://laravel.com/) projects while learning the framework.
 
 

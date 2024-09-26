@@ -13,7 +13,7 @@
       <div class="col-12">
          <div class="d-flex justify-content-center">
             <div class="p-2 bg-tint-light rounded m-1">Your current balance is:
-               <span class="fw-bold">{{ $states->last()['total_amount'] ?? '0.00' }} Taka</span>
+               <span class="fw-bold">{{ $states->first()['total_amount'] ?? '0.00' }} Taka</span>
             </div>
          </div>
          <div class="d-flex justify-content-center">
