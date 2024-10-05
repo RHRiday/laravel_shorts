@@ -39,6 +39,8 @@ Route::prefix('dokkofaq')->group(function () {
 });
 Route::get('contacts-download', [ContactController::class, 'download'])->name('contacts.download');
 Route::resource('contacts', ContactController::class);
+Route::get('statements/compare', [BankStatementController::class, 'compare'])->name('statements.compare');
+Route::post('statements/compare', [BankStatementController::class, 'compare'])->name('statements.compare.post');
 Route::resource('statements', BankStatementController::class);
 Route::get('attendances/{student}', [StdAttController::class, 'show'])->name('attendances.show');
 Route::post('attendances/{stdAtt}', [StdAttController::class, 'destroy'])->name('attendances.destroy');

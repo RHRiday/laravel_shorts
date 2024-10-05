@@ -4,6 +4,7 @@
 ])
 
 @section('app')
+
    <div class="bg-tint py-3">
       <div class="col-12 text-center">
          <h1 class="ff-catamaran my-1 my-md-2">
@@ -20,6 +21,10 @@
             <a class="p-2 rounded m-1 shadow btn btn-outline-primary bg-gradient ff-catamaran"
                href="{{ route('statements.create') }}">
                Add a state
+            </a>
+            <a class="p-2 rounded m-1 shadow btn btn-info bg-gradient ff-catamaran text-white"
+               href="{{ route('statements.compare') }}">
+               Compare balance
             </a>
             {{-- <a class="p-2 rounded m-1 shadow btn btn-outline-success bg-gradient ff-catamaran"
                href="{{ route('contacts.download') }}" target="_blank">

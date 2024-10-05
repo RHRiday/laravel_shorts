@@ -182,3 +182,42 @@ function addContact(button) {
         }
     });
 }
+function checkDiff(button) {
+    // $(button).prop('disabled', true);
+    $.ajax({
+        type: "post",
+        url: "/statements/compare",
+        data: {
+            from_date: $('#from_date').val(),
+            to_date: $('#to_date').val(),
+        },
+        success: function (response) {
+            console.log(response);
+            let toAppend = `
+                    <div class="row">
+                        <div class="col-5">
+                            <p>Opening balance: `+`</p>
+                        </div>
+                        <div class="col-7 text-end">
+                            <p class="fw-bold ff-source-code">` + response.opening_balance +` BDT</p>
+                        </div>
+                        <div class="col-5">
+                            <p>Closing balance: `+`</p>
+                        </div>
+                        <div class="col-7 text-end">
+                            <p class="fw-bold ff-source-code">` + response.closing_balance +` BDT</p>
+                        </div>
+                        <div class="col-5">
+                            <p>Balance difference: `+`</p>
+                        </div>
+                        <div class="col-7 text-end">
+                            <p class="fw-bold ff-source-code `+ response.color +`">` + response.diff_balance +` BDT</p>
+                        </div>
+                    </div>
+                `;
+            $('#cmpr').empty();;
+            $('#cmpr').append(toAppend);
+            // $(button).prop('disabled', false);
+        }
+    });
+}
