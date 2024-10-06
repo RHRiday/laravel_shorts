@@ -17,11 +17,12 @@ class BankStatementController extends Controller
                 'uniqId' => $uniqId,
                 'total_amount' => $each->sum('amount'),
                 'statement_date' => Carbon::parse($each->min('created_at'))->format('d F Y'),
+                'created_at' => Carbon::parse($each->min('created_at'))->format('Ymd'),
                 'items' => $each
             ];
         });
         return view('apps.statements', [
-            'states' => $data->sortByDesc('statement_date'),
+            'states' => $data->sortByDesc('created_at'),
         ]);
     }
     public function create()
